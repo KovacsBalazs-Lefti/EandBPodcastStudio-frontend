@@ -11,22 +11,14 @@ function App () {
   const [token, setToken] = useState('');
   const [userData, setUserData] = useState(null);
 
-  const loadUserData = async () => {
-    const url = apiUrl + "/user"
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer "+token
-      }
-    });
-    const data = await response.json();
-    if (response.ok){
-      setUserData(data);
-    }else{
-      setToken('');
+ 
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    if (storedToken){
+      setToken(storedToken);
     }
-  }
+  }, []);
   //lekérdezés amikor a token megváltozik (uef)
   useEffect(() => {
     if (token){
@@ -36,6 +28,8 @@ function App () {
     }
   }, [token]);
  
+
+
 const login = async FormData => {
   const url = apiUrl + "/login";
   const response = await fetch(url, {
@@ -49,13 +43,34 @@ const login = async FormData => {
   const data = await response.json();
   console.log(data);
   if  (response.ok) {
+      localStorage.setItem("token", data.token);
       setToken(data.token);
       alert("Sikeres bejelentkezés")
   }else {
       alert(data.message);
   }
 
-}
+};
+
+const loadUserData = async () => {
+  const url = apiUrl + "/user"
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Accept": "application/json",
+      "Authorization": "Bearer "+token
+    }
+  });
+  const data = await response.json();
+  if (response.ok){
+    setUserData(data);
+  }else{
+    localStorage.removeItem("token");
+    setToken('');
+  }
+};
+
+
 const logout = async () =>{
   const url = apiUrl + "/logout";
   const response = await fetch(url, {
@@ -66,6 +81,7 @@ const logout = async () =>{
     }
   })
   if (response.ok){
+    localStorage.removeItem("token");
     setToken('');
   }else{
     const data = await response.json();
@@ -83,6 +99,7 @@ const logoutEverywhere = async () => {
     }
   })
   if (response.ok){
+    localStorage.removeItem("token");
     setToken('');
   }else{
     const data = await response.json();
