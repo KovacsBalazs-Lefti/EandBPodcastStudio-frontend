@@ -1,8 +1,9 @@
 import { useRef } from "react";
+import propTypes from "prop-types";
 
 
-function LoginForm() {
-    const apiUrl ="http://localhost:8000/api";
+function LoginForm(props) {
+    const { onSubmit } = props;
     const emailRef = useRef(null);
     const jelszoRef = useRef(null);
    
@@ -14,28 +15,9 @@ function LoginForm() {
             email:emailRef.current.value,
             jelszo:jelszoRef.current.value,
     };
-    login(user)
+    onSubmit(user)
 }
-//regisztracios függvény ami felhasználói adatokat vár eredményül
-const login = async userData => {
-    const url = apiUrl + "/login";
-    const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(userData),
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json"
-        }
-    });
-    const data = await response.json();
-    console.log(data);
-    if  (response.ok) {
-        alert("Sikeres bejelentkezés")
-    }else {
-        alert(data.message);
-    }
 
-}
 
     return (  <form style={{marginTop: "5px", marginBottom: "5px"}} onSubmit={handleformSubmit}>
         <div>
@@ -48,6 +30,11 @@ const login = async userData => {
         </div>
         <button type="submit">Bejelentkezés</button>
     </form>);
+}
+
+LoginForm.propTypes = {
+    onSubmit: propTypes.func.isRequired
+
 }
 
 export default LoginForm;
