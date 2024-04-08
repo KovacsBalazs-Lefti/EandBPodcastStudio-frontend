@@ -1,9 +1,10 @@
 
 import { useEffect, useState } from 'react';
 import './App.css'
-import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm';
-import UserProfile from './components/UserProfile';
+import LoginForm from './pages/LoginForm';
+import RegisterForm from './pages/RegisterForm';
+import UserProfile from './pages/UserProfile';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 function App () {
   const apiUrl ="http://localhost:8000/api";
@@ -11,7 +12,16 @@ function App () {
   const [token, setToken] = useState('');
   const [userData, setUserData] = useState(null);
 
- 
+  const router = createBrowserRouter([{
+  path: "/",
+  element: <div>Hello World</div>
+  },
+  {
+    path: "/rolunk",
+    element: <div>Rólunk</div>
+  }
+
+]);
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
@@ -107,17 +117,23 @@ const logoutEverywhere = async () => {
   }
 }
 
-  return (<main>
+  return (
+    
+  <div>
+    <RouterProvider router={router}/>
+    <main>
+      {userData != null ? (
+        <UserProfile user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere} />
+      )  : (
+        <>
+        <RegisterForm/>
+        <LoginForm onSubmit={login}/>
+        </>
+      )}
+    </main>
+  </div>  
 
-    {userData != null ?
-      <UserProfile user={userData} logoutClick={logout} logoutEverywhereClick={logoutEverywhere} />
-      :
-      <>
-      <RegisterForm/>
-      <LoginForm onSubmit={login}/>
-      </>
-    }
-  </main>  );
+  );
 }
 
 export default App ;
