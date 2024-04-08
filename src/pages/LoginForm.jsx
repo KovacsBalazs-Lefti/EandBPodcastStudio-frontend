@@ -1,11 +1,32 @@
 import { useRef } from "react";
-import propTypes from "prop-types";
 
 
-function LoginForm(props) {
-    const { onSubmit } = props;
+function LoginForm() {
+    const apiUrl = "http://localhost:8000/api";
     const emailRef = useRef(null);
     const jelszoRef = useRef(null);
+
+
+    const login = async FormData => {
+        const url = apiUrl + "/login";
+        const response = await fetch(url, {
+          method: "POST",
+          body: JSON.stringify(FormData),
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        });
+        const data = await response.json();
+        console.log(data);
+        if (response.ok) {
+          localStorage.setItem("token", data.token);
+          alert("Sikeres bejelentkezés")
+        } else {
+          alert(data.message);
+        }
+    
+      };
    
    
     const handleformSubmit = async (event) =>{
@@ -15,7 +36,7 @@ function LoginForm(props) {
             email:emailRef.current.value,
             jelszo:jelszoRef.current.value,
     };
-    onSubmit(user)
+    login(user)
 }
 
 
@@ -30,11 +51,6 @@ function LoginForm(props) {
         </div>
         <button type="submit">Bejelentkezés</button>
     </form>);
-}
-
-LoginForm.propTypes = {
-    onSubmit: propTypes.func.isRequired
-
 }
 
 export default LoginForm;

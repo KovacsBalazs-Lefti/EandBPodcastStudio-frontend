@@ -1,9 +1,17 @@
+import {Link} from "react-router-dom";
 function Navbar() {
     return (  <nav>
         <ul>
-            <li><a href="/">Rólunk</a></li>
-            <li><a href="/foglalas">Foglalás</a></li>
-            <li><a href="/regisztracio">Regisztráció</a></li>
+            <li>
+                <Link to="/">Home</Link>
+            </li>
+            
+            <li>
+                <Link to="/register">Regisztráció</Link>
+            </li>
+            <li>
+                <Link to="/user-profile">Bejelentkezés</Link>
+            </li>
         </ul>
     </nav>);
 }

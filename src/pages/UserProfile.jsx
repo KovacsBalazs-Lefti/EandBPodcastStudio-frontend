@@ -1,20 +1,84 @@
-import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 
-function UserProfile(props) {
-    const { user, logoutClick, logoutEverywhereClick } = props;
+function UserProfile() {
+    const apiUrl = "http://localhost:8000/api";
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+          loadUserData();
+        } else {
+          setUser(null);
+        }
+      }, []);
+
+      
+  const loadUserData = async () => {
+
+    const token = localStorage.getItem("token");
+    const url = apiUrl + "/user"
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Accept": "application/json",
+        "Authorization": "Bearer " + token,
+      },
+    });
+    const data = await response.json();
+    if (response.ok) {
+      setUser(data);
+    } else {
+      localStorage.removeItem("token");
+    }
+  };
+
+    const logout = async () => {
+
+        const token = localStorage.getItem("token");
+        const url = apiUrl + "/logout";
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            Authorization: "Bearer " + token
+          }
+        });
+        
+        if (response.ok) {
+          localStorage.removeItem("token");
+        } else {
+          const data = await response.json();
+          alert(data.message);
+        }
+      };
+    
+      const logoutEverywhere = async () => {
+        
+        const token = localStorage.removeItem("token");
+        const url = apiUrl + "/logout-logoutEverywhere";
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            Authorization: "Bearer " + token
+          }
+        })
+        if (response.ok) {
+          localStorage.removeItem("token");
+        } else {
+          const data = await response.json();
+          alert(data.message);
+        }
+      };
+
+
     return ( <div>
         <p>Bejelentkezve: {user.nev}</p>
-        <button type="button" onClick={() => logoutClick()}>Kijelentkezés</button>
-        <button type="button"onClick={() => logoutEverywhereClick()}>Kijelentkezés mindenhonnan</button>
+        <button type="button" onClick={() => logout()}>Kijelentkezés</button>
+        <button type="button"onClick={() => logoutEverywhere()}>Kijelentkezés mindenhonnan</button>
     </div> );
 }
-
-UserProfile.propTypes = {
-    user: PropTypes.object.isRequired,
-    logoutClick: PropTypes.func.isRequired,
-    logoutEverywhereClick: PropTypes.func.isRequired
-}
-
 
 export default UserProfile;
