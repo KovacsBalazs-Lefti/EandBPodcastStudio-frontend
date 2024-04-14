@@ -28,6 +28,6 @@ function Layout(props) {
 }
 
 Layout.propTypes = {
-    token: PropTypes.string.isRequired
+    token: PropTypes.string
 }
 export default Layout;

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function UserProfile() {
+
+function UserProfile(props) {
+    const {refreshToken} = props;
     const apiUrl = "http://localhost:8000/api";
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
@@ -10,6 +13,7 @@ function UserProfile() {
         const token = localStorage.getItem("token");
         if (token) {
           loadUserData();
+          refreshToken();
         } else {
           navigate("/login");
           setUser(null);
@@ -51,6 +55,7 @@ function UserProfile() {
         
         if (response.ok) {
           localStorage.removeItem("token");
+          refreshToken();
           navigate("/login");
         } else {
           const data = await response.json();
@@ -71,6 +76,7 @@ function UserProfile() {
         })
         if (response.ok) {
           localStorage.removeItem("token");
+          refreshToken();
           navigate("/login");
         } else {
           const data = await response.json();
@@ -94,5 +100,9 @@ function UserProfile() {
     </div>
     );
 }
+UserProfile.propTypes = {
+  refreshToken: PropTypes.func.isRequired
+}
+
 
 export default UserProfile;
