@@ -44,15 +44,16 @@ function LoginPage() {
 
 
     return (  <form style={{marginTop: "5px", marginBottom: "5px"}} onSubmit={handleformSubmit}>
-        <div>
-            <label htmlFor="loginemail">Email</label>
-            <input type="email" id="loginemail" placeholder="email" ref={emailRef} />
+        <h1>Bejelentkezés</h1>
+        <div className="mb-3">
+            <label className="form-label" htmlFor="loginemail">Email</label>
+            <input className="form-control" type="email" id="loginemail" placeholder="email" ref={emailRef} />
         </div>
-        <div>
-            <label htmlFor="loginjelszo">Jelszó</label>
-            <input type="password" id="loginjelszo" placeholder="jelszo" ref={jelszoRef}/>
+        <div className="mb-3">
+            <label className="form-label" htmlFor="loginjelszo">Jelszó</label>
+            <input className="form-control" type="password" id="loginjelszo" placeholder="jelszo" ref={jelszoRef}/>
         </div>
-        <button type="submit">Bejelentkezés</button>
+        <button className="btn btn-primary" type="submit">Bejelentkezés</button>
     </form>);
 }
 

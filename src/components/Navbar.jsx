@@ -15,14 +15,19 @@ function Navbar() {
                                 <Link className="nav-link" to="/">Rólunk</Link>
                             </li>
                             <li className="nav-item">
+                                <Link className="nav-link" to="/user-profile">Profil</Link>
+                            </li>
+
+                        </ul>
+                        <ul className="navbar-nav">
+
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/register">Regisztráció</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/login">Bejelentkezés</Link>
                             </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/user-profile">Profil</Link>
-                            </li>
+
 
                         </ul>
                     </div>
