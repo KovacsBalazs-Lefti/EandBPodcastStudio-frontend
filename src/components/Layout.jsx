@@ -4,7 +4,7 @@ import {Outlet} from "react-router-dom";
 function Layout() {
     return ( <>
         <Navbar />
-        <main>
+        <main className="container">
            <Outlet />
         </main>
     </> );

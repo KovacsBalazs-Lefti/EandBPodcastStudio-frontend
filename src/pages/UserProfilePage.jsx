@@ -11,6 +11,7 @@ function UserProfile() {
         if (token) {
           loadUserData();
         } else {
+          navigate("/login");
           setUser(null);
         }
       }, []);
@@ -32,6 +33,7 @@ function UserProfile() {
       setUser(data);
     } else {
       localStorage.removeItem("token");
+      navigate("/login");
     }
   };
 
