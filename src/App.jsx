@@ -7,21 +7,32 @@ import UserProfilePage from './pages/UserProfilePage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [token, setToken] = useState(null);
+
+  const refreshToken = () => {
+    setToken(localStorage.getItem("token"));
+  }
+
+  useEffect(() => {
+    refreshToken();
+  },[]);
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
+      element: <Layout token={token} />,
       children: [
         {
           path: "/",
-          element: <HomePage />,
+          element: <HomePage refreshToken={refreshToken} />,
         },
         {
           path: "/user-profile",
-          element: <UserProfilePage />,
+          element: <UserProfilePage refreshToken={refreshToken} />,
         },
         {
           path: "/register",
@@ -29,7 +40,7 @@ function App() {
         },
         {
           path: "/login",
-          element: <LoginPage />
+          element: <LoginPage refreshToken={refreshToken} />
         },
       ],
     },

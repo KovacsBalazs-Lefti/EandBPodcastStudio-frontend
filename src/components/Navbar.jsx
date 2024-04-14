@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-function Navbar() {
+import PropTypes from "prop-types";
+
+function Navbar(props) {
+    const { leftSide, rightSide } = props;
     return (
         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div className="container-fluid">
@@ -10,30 +13,28 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb2 mb-lg-0">
-
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">Rólunk</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/user-profile">Profil</Link>
-                            </li>
+                            {leftSide.map(navItem => <li key={navItem.to} className="nav-item">
+                                <Link className="nav-link" to={navItem.to}>
+                                    {navItem.text}
+                                </Link>
+                            </li>)}
 
                         </ul>
                         <ul className="navbar-nav">
-
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/register">Regisztráció</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/login">Bejelentkezés</Link>
-                            </li>
-
+                            {rightSide.map(navItem => <li key={navItem.to} className="nav-item">
+                                <Link className="nav-link" to={navItem.to}>
+                                    {navItem.text}
+                                </Link>
+                            </li>)}
 
                         </ul>
                     </div>
                 </div>
             </div>
-        </nav>);
+        </nav>)
 }
-
+Navbar.propTypes = {
+    leftSide: PropTypes.array.isRequired,
+    rightSide: PropTypes.array.isRequired,
+}
 export default Navbar;

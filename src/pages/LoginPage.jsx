@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 
-function LoginPage() {
+function LoginPage(props) {
+    const {refreshToken} = props;
     const apiUrl = "http://localhost:8000/api";
     const emailRef = useRef(null);
     const jelszoRef = useRef(null);
@@ -23,6 +25,7 @@ function LoginPage() {
         console.log(data);
         if (response.ok) {
           localStorage.setItem("token", data.token);
+          refreshToken();
           navigate("/user-profile");
           alert("Sikeres bejelentkezés")
         } else {
@@ -55,6 +58,9 @@ function LoginPage() {
         </div>
         <button className="btn btn-primary" type="submit">Bejelentkezés</button>
     </form>);
+}
+LoginPage.propTypes = {
+  refreshToken: PropTypes.func.isRequired
 }
 
 export default LoginPage;
