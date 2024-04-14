@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 
-function LoginForm() {
+function LoginPage() {
     const apiUrl = "http://localhost:8000/api";
     const emailRef = useRef(null);
     const jelszoRef = useRef(null);
@@ -53,4 +53,4 @@ function LoginForm() {
     </form>);
 }
 
-export default LoginForm;
+export default LoginPage;

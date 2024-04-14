@@ -1,8 +1,8 @@
 
 import './App.css'
-import LoginForm from './pages/LoginForm';
-import RegisterForm from './pages/RegisterForm';
-import UserProfile from './pages/UserProfile';
+import LoginForm from './pages/LoginPage';
+import RegisterForm from './pages/RegisterPage';
+import UserProfile from './pages/UserProfilePage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
@@ -19,7 +19,7 @@ function App() {
           element: <HomePage />,
         },
         {
-          path: "/foglalas",
+          path: "/user-profile",
           element: <UserProfile />,
         },
         {

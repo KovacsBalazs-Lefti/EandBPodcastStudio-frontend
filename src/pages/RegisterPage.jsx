@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-function RegisterForm() {
+function RegisterPage() {
             const apiUrl ="http://localhost:8000/api";
             const nevRef = useRef(null);
             const emailRef = useRef(null);
@@ -168,4 +168,4 @@ function RegisterForm() {
     </form> );
 }
 
-export default RegisterForm;
+export default RegisterPage;

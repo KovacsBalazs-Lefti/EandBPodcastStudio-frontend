@@ -10,7 +10,10 @@ function Navbar() {
                 <Link to="/register">Regisztráció</Link>
             </li>
             <li>
-                <Link to="/user-profile">Bejelentkezés</Link>
+                <Link to="/login">Bejelentkezés</Link>
+            </li>
+            <li>
+                <Link to="/user-profile">Profil</Link>
             </li>
         </ul>
     </nav>);

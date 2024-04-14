@@ -74,11 +74,15 @@ function UserProfile() {
       };
 
 
-    return ( <div>
+    return user ? ( 
+        <div>
         <p>Bejelentkezve: {user.nev}</p>
         <button type="button" onClick={() => logout()}>Kijelentkezés</button>
         <button type="button"onClick={() => logoutEverywhere()}>Kijelentkezés mindenhonnan</button>
-    </div> );
+        </div> 
+    ) : (
+    <></>
+    );
 }
 
 export default UserProfile;
