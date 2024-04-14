@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 function UserProfile() {
     const apiUrl = "http://localhost:8000/api";
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -48,6 +49,7 @@ function UserProfile() {
         
         if (response.ok) {
           localStorage.removeItem("token");
+          navigate("/login");
         } else {
           const data = await response.json();
           alert(data.message);
@@ -67,6 +69,7 @@ function UserProfile() {
         })
         if (response.ok) {
           localStorage.removeItem("token");
+          navigate("/login");
         } else {
           const data = await response.json();
           alert(data.message);
@@ -81,7 +84,9 @@ function UserProfile() {
         <button type="button"onClick={() => logoutEverywhere()}>Kijelentkezés mindenhonnan</button>
         </div> 
     ) : (
-    <></>
+    <div>
+      <h2>Adatok betöltése folyamatban...</h2>
+    </div>
     );
 }
 

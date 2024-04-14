@@ -1,10 +1,12 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function LoginPage() {
     const apiUrl = "http://localhost:8000/api";
     const emailRef = useRef(null);
     const jelszoRef = useRef(null);
+    const navigate = useNavigate();
 
 
     const login = async FormData => {
@@ -21,6 +23,7 @@ function LoginPage() {
         console.log(data);
         if (response.ok) {
           localStorage.setItem("token", data.token);
+          navigate("/user-profile");
           alert("Sikeres bejelentkezés")
         } else {
           alert(data.message);

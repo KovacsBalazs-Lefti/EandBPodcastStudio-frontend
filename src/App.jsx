@@ -1,8 +1,8 @@
 
 import './App.css'
-import LoginForm from './pages/LoginPage';
-import RegisterForm from './pages/RegisterPage';
-import UserProfile from './pages/UserProfilePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import UserProfilePage from './pages/UserProfilePage';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
@@ -20,15 +20,15 @@ function App() {
         },
         {
           path: "/user-profile",
-          element: <UserProfile />,
+          element: <UserProfilePage />,
         },
         {
           path: "/register",
-          element: <RegisterForm />,
+          element: <RegisterPage />,
         },
         {
           path: "/login",
-          element: <LoginForm />
+          element: <LoginPage />
         },
       ],
     },

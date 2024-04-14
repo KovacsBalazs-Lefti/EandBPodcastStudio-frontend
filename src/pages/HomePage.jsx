@@ -2,10 +2,10 @@ import { useEffect } from "react";
 function HomePage() {
 
     useEffect(() => {
-        console.log("Home");
+      
     }, []);     
     return ( <>
-
+    <h1>Bemutatkozás</h1>
     </> );
 }
 
