@@ -44,7 +44,7 @@ function LoginPage() {
 
 
     return (  <form style={{marginTop: "5px", marginBottom: "5px"}} onSubmit={handleformSubmit}>
-        <h1>Bejelentkezés</h1>
+        <h2>Bejelentkezés</h2>
         <div className="mb-3">
             <label className="form-label" htmlFor="loginemail">Email</label>
             <input className="form-control" type="email" id="loginemail" placeholder="email" ref={emailRef} />

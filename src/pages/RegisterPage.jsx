@@ -78,96 +78,97 @@ function RegisterPage() {
     }
 
     return (<form onSubmit={handleformSubmit}>
-        <div>
-            <label htmlFor="nev">Név</label>
-            <input type="text" id="nev" placeholder="Név" ref={nevRef} />
+        <h2>Regisztráció</h2>
+        <div className="mb-3">
+            <label className="form-label" htmlFor="nev">Név</label>
+            <input className="form-control"   type="text" id="nev" placeholder="Név" ref={nevRef} />
         </div>
-        <div>
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="email" ref={emailRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="email">Email</label>
+            <input className="form-control"   type="email" id="email" placeholder="email" ref={emailRef} />
         </div>
-        <div>
-            <label htmlFor="jelszo">Jelszó</label>
-            <input type="password" id="jelszo" placeholder="jelszo" ref={jelszoRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="jelszo">Jelszó</label>
+            <input className="form-control"   type="password" id="jelszo" placeholder="jelszo" ref={jelszoRef} />
         </div>
-        <div>
-            <label htmlFor="jelszo_megerositese">Jelszó megerősítése</label>
-            <input type="password" id="jelszo_megerositese" placeholder="Jelszó megerősítése" ref={jelszo_megerositeseRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="jelszo_megerositese">Jelszó megerősítése</label>
+            <input className="form-control"   type="password" id="jelszo_megerositese" placeholder="Jelszó megerősítése" ref={jelszo_megerositeseRef} />
         </div>
-        <div>
-            <label htmlFor="telefonszam">Telefonszám</label>
-            <input type="text" id="telefonszam" placeholder="Telefonszám" ref={telefonszamRef} />
+        <div className="mb-3"> 
+            <label className="form-label" htmlFor="telefonszam">Telefonszám</label>
+            <input className="form-control"   type="text" id="telefonszam" placeholder="Telefonszám" ref={telefonszamRef} />
         </div>
-        <div>
-            <label htmlFor="szemelyi_szam">Személyi szám</label>
-            <input type="text" id="szemelyi_szam" placeholder="Személyi szám" ref={szemelyiSzamRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="szemelyi_szam">Személyi szám</label>
+            <input  className="form-control" type="text" id="szemelyi_szam" placeholder="Személyi szám" ref={szemelyiSzamRef} />
         </div>
-        <div>
-            <label htmlFor="szuletesi_datum">Születési dátum</label>
-            <input type="date" id="szuletesi_datum" placeholder="Születési dátum" ref={szuletesi_datumRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="szuletesi_datum">Születési dátum</label>
+            <input className="form-control" type="date" id="szuletesi_datum" placeholder="Születési dátum" ref={szuletesi_datumRef} />
         </div>
-        <div>
-            <input type="checkbox" id="ceg" placeholder="Céggel regisztrálok" ref={cegRef} />
-            <label htmlFor="ceg">Céggel regisztrálok</label>
+        <div className="mb-3">
+            <input className="form-label" type="checkbox" id="ceg" placeholder="Céggel regisztrálok" ref={cegRef} />
+            <label className="form-control" htmlFor="ceg">Céggel regisztrálok</label>
         </div>
-        <div>
-            <label htmlFor="cegnev">Cégnév</label>
-            <input type="text" id="cegnev" placeholder="Cégnév" ref={cegnevRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="cegnev">Cégnév</label>
+            <input className="form-control" type="text" id="cegnev" placeholder="Cégnév" ref={cegnevRef} />
         </div>
-        <div>
-            <label htmlFor="ceg_tipus">Cég típusa</label>
-            <input type="text" id="ceg_tipus" placeholder="Cég típusa" ref={cegTipusRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="ceg_tipus">Cég típusa</label>
+            <input className="form-control" type="text" id="ceg_tipus" placeholder="Cég típusa" ref={cegTipusRef} />
         </div>
-        <div>
-            <label htmlFor="ado_szam">Adószám</label>
-            <input type="text" id="ado_szam" placeholder="Adószám" ref={adoSzamRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="ado_szam">Adószám</label>
+            <input className="form-control" type="text" id="ado_szam" placeholder="Adószám" ref={adoSzamRef} />
         </div>
-        <div>
-            <label htmlFor="bankszamlaszam">Bankszámlaszám</label>
-            <input type="text" id="bankszamlaszam" placeholder="Bankszámlaszám" ref={bankszamlaszamRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="bankszamlaszam">Bankszámlaszám</label>
+            <input className="form-control" type="text" id="bankszamlaszam" placeholder="Bankszámlaszám" ref={bankszamlaszamRef} />
         </div>
-        <div>
-            <label htmlFor="orszag">Ország</label>
-            <input type="text" id="orszag" placeholder="Ország" ref={orszagRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="orszag">Ország</label>
+            <input className="form-control" type="text" id="orszag" placeholder="Ország" ref={orszagRef} />
         </div>
-        <div>
-            <label htmlFor="iranyitoszam">Irányítószám</label>
-            <input type="text" id="iranyitoszam" placeholder="Irányítószám" ref={iranyitoszamRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="iranyitoszam">Irányítószám</label>
+            <input className="form-control" type="text" id="iranyitoszam" placeholder="Irányítószám" ref={iranyitoszamRef} />
         </div>
-        <div>
-            <label htmlFor="varos">Város</label>
-            <input type="text" id="varos" placeholder="Város" ref={varosRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="varos">Város</label>
+            <input className="form-control" type="text" id="varos" placeholder="Város" ref={varosRef} />
         </div>
-        <div>
-            <label htmlFor="utca">Utca neve</label>
-            <input type="text" id="utca" placeholder="utca" ref={utcaRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="utca">Utca neve</label>
+            <input className="form-control" type="text" id="utca" placeholder="utca" ref={utcaRef} />
         </div>
-        <div>
-            <label htmlFor="utca_jellege">Utca jellege</label>
-            <input type="text" id="utca_jellege" placeholder="Utca jellege" ref={utcaJellegeRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="utca_jellege">Utca jellege</label>
+            <input className="form-control" type="text" id="utca_jellege" placeholder="Utca jellege" ref={utcaJellegeRef} />
         </div>
-        <div>
-            <label htmlFor="hazszam">Házszám</label>
-            <input type="text" id="hazszam" placeholder="Házszám" ref={hazszamRef} />
+        <div className="mb-3">
+            <label className="form-label"  htmlFor="hazszam">Házszám</label>
+            <input className="form-control"  type="text" id="hazszam" placeholder="Házszám" ref={hazszamRef} />
         </div>
-        <div>
-            <label htmlFor="epulet">Épület</label>
-            <input type="text" id="epulet" placeholder="Épület" ref={epuletRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="epulet">Épület</label>
+            <input className="form-control" type="text" id="epulet" placeholder="Épület" ref={epuletRef} />
         </div>
-        <div>
-            <label htmlFor="lepcsohaz">Lépcsőház</label>
-            <input type="text" id="lepcsohaz" placeholder="Lépcsőház" ref={lepcsohazRef} />
+        <div className="mb-3">
+            <label className="form-label" htmlFor="lepcsohaz">Lépcsőház</label>
+            <input className="form-control" type="text" id="lepcsohaz" placeholder="Lépcsőház" ref={lepcsohazRef} />
         </div>
-        <div>
-            <label htmlFor="emelet">Emelet</label>
-            <input type="text" id="emelet" placeholder="Emelet" ref={emeletRef} />
+        <div className="mb-3">
+            <label  className="form-label" htmlFor="emelet">Emelet</label>
+            <input className="form-control" type="text" id="emelet" placeholder="Emelet" ref={emeletRef} />
         </div>
-        <div>
-            <label htmlFor="ajto">Ajtó</label>
-            <input type="text" id="ajto" placeholder="Ajtó" ref={ajtoRef} />
+        <div className="mb-3"> 
+            <label className="form-label" htmlFor="ajto">Ajtó</label>
+            <input className="form-control" type="text" id="ajto" placeholder="Ajtó" ref={ajtoRef} />
         </div>
 
-        <button type="submit">Regisztráció</button>
+        <button className="btn btn-primary" type="submit">Regisztráció</button>
     </form>);
 }
 

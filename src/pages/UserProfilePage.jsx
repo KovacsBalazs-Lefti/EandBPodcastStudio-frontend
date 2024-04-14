@@ -81,9 +81,12 @@ function UserProfile() {
 
     return user ? ( 
         <div>
-        <p>Bejelentkezve: {user.nev}</p>
-        <button type="button" onClick={() => logout()}>Kijelentkezés</button>
-        <button type="button"onClick={() => logoutEverywhere()}>Kijelentkezés mindenhonnan</button>
+        <h2>Profil</h2>
+        <h4>Bejelentkezve: {user.nev}</h4>
+       <div className="d-grid gap-2">
+         <button className="btn btn-primary" type="button" onClick={() => logout()}>Kijelentkezés</button>
+         <button className="btn btn-primary" type="button"onClick={() => logoutEverywhere()}>Kijelentkezés mindenhonnan</button>  
+       </div>
         </div> 
     ) : (
     <div>
