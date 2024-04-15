@@ -9,6 +9,7 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import { AuthProvider } from './context/AuthContext';
 import MyBookingsPage from './pages/MyBookingsPage';
+import CreateBookingPage from './pages/CreateBookingPage';
 
 function App() {
 
@@ -37,6 +38,10 @@ function App() {
         {
           path: "/my-bookings",
           element: <MyBookingsPage />
+        },
+        {
+          path: "create-bookings",
+          element: <CreateBookingPage />        
         },
       ],
     },
