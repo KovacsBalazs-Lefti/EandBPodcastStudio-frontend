@@ -7,7 +7,6 @@ function UserProfile() {
     const navigate = useNavigate();
     const authContext = useContext (AuthContext);
     const {user, authToken, logout, logoutEverywhere} = authContext;
-    console.log(authContext);
 
     useEffect(() => {
         if (!authToken) {

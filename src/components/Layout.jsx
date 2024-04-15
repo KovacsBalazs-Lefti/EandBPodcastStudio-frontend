@@ -1,17 +1,17 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Navbar from "./Navbar";
 import {Outlet} from "react-router-dom";
-import PropTypes from "prop-types"
+import { AuthContext } from "../context/AuthContext";
 
-function Layout(props) {
-
+function Layout() {
+    const authContext = useContext(AuthContext);
     //bejelentkezés kijelentkezés navigacio megvalósítása
-    const {token} = props;
+    const {authToken} = authContext;
     const navbarLeftSide = [];
     const navbarRightSide = [];
 
     navbarLeftSide.push({to: "/", text: "Rólunk"});
-    if (token) {
+    if (authToken) {
         navbarLeftSide.push({to: "/my-bookings", text: "Foglalásaim"});
         navbarRightSide.push({to: "/user-profile", text: "Profil"});
         
@@ -29,7 +29,5 @@ function Layout(props) {
     </> );
 }
 
-Layout.propTypes = {
-    token: PropTypes.string
-}
+
 export default Layout;

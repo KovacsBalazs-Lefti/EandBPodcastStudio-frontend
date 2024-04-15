@@ -113,7 +113,6 @@ export function AuthProvider(props) {
                 },
             });
             const data = await response.json();
-            console.log(data);
             if (response.ok) {
                 const token = data.token;
                 localStorage.setItem("token", token);
