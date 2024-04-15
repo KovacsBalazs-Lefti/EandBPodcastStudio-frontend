@@ -14,7 +14,7 @@ function Layout(props) {
     if (token) {
         navbarRightSide.push({to: "/user-profile", text: "Profil"});
     } else{
-        navbarRightSide.push({to: "/bejelentkezes", text: "Bejelentkezés"});
+        navbarRightSide.push({to: "/login", text: "Bejelentkezés"});
         navbarRightSide.push({to: "/register", text: "Regisztráció"});
 
     }

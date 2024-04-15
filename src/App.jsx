@@ -4,6 +4,7 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserProfilePage from './pages/UserProfilePage';
+import MyBookings from './pages/MyBookings';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
@@ -41,6 +42,10 @@ function App() {
         {
           path: "/login",
           element: <LoginPage refreshToken={refreshToken} />
+        },
+        {
+          path: "/foglalas",
+          element: <MyBookings refreshToken={refreshToken} />
         },
       ],
     },

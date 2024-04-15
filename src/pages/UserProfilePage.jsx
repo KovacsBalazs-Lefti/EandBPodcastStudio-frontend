@@ -13,7 +13,6 @@ function UserProfile(props) {
         const token = localStorage.getItem("token");
         if (token) {
           loadUserData();
-          refreshToken();
         } else {
           navigate("/login");
           setUser(null);
@@ -37,6 +36,7 @@ function UserProfile(props) {
       setUser(data);
     } else {
       localStorage.removeItem("token");
+      refreshToken();
       navigate("/login");
     }
   };
