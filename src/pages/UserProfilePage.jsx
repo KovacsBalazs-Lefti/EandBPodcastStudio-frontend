@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState,  } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
+import { AuthContext } from "../context/AuthContext";
 
 
 function UserProfile(props) {
@@ -8,6 +9,8 @@ function UserProfile(props) {
     const apiUrl = "http://localhost:8000/api";
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
+    const authContext = useContext (AuthContext);
+    console.log(authContext);
 
     useEffect(() => {
         const token = localStorage.getItem("token");

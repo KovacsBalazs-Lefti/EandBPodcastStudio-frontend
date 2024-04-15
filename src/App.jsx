@@ -9,6 +9,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import { useEffect, useState } from 'react';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
 
@@ -53,7 +54,9 @@ function App() {
 
 
   return (
+      <AuthProvider>
       <RouterProvider router={router} />
+      </AuthProvider>
   );
 }
 
