@@ -4,11 +4,11 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import UserProfilePage from './pages/UserProfilePage';
-import MyBookings from './pages/MyBookings';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import { AuthProvider } from './context/AuthContext';
+import MyBookingsPage from './pages/MyBookingsPage';
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout token={token} />,
+      element: <Layout/>,
       children: [
         {
           path: "/",
@@ -36,7 +36,7 @@ function App() {
         },
         {
           path: "/my-bookings",
-          element: <MyBookings />
+          element: <MyBookingsPage />
         },
       ],
     },
