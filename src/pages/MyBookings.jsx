@@ -12,7 +12,7 @@ function MyBookings(props) {
         const token = localStorage.getItem("token");
         const response = await fetch(apiUrl + "/foglalas", {
             headers: {
-                Authorization: "Bearer" + token
+                Authorization: "Bearer " + token
             }
         })
         if (response.ok) {
@@ -20,7 +20,7 @@ function MyBookings(props) {
             console.log(data);
             setBookings(data);
         }else if (response.status == 401) {
-            localStorage.RemoveItem("token");
+            localStorage.removeItem("token");
             refreshToken();
             navigate("/login");
         }
@@ -37,8 +37,10 @@ function MyBookings(props) {
 
 
     return  <div className="row">
-        {bookings.map((bookings) => (<div key={foglalasid} className="col">
-        <h4>{szolgatatasneve}</h4>
+        {bookings.map((bookings) => (<div key={bookings.foglalas} className="col">
+        <h4>{bookings.szolgaltatasnev}</h4>
+        <h5> Foglalas kezdete: {bookings.foglalaskezdete}</h5>
+        <h5> Foglalas hossza: {bookings.foglalashossza} óra</h5>
         </div>))}
     </div>;
 }
