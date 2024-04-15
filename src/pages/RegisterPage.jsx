@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function RegisterPage() {
-    const apiUrl = "http://localhost:8000/api";
     const nevRef = useRef(null);
     const emailRef = useRef(null);
     const jelszoRef = useRef(null);
@@ -26,57 +26,40 @@ function RegisterPage() {
     const emeletRef = useRef(null);
     const ajtoRef = useRef(null);
     const navigate = useNavigate();
+    const authContext = useContext(AuthContext);
+    const {register} = authContext;
 
     const handleformSubmit = async (event) => {
         event.preventDefault();
 
-        const newUser = {
-            nev: nevRef.current.value,
-            email: emailRef.current.value,
-            jelszo: jelszoRef.current.value,
-            jelszo_megerositese: jelszo_megerositeseRef.current.value,
-            telefonszam: telefonszamRef.current.value,
-            szemelyi_szam: szemelyiSzamRef.current.value,
-            szuletesi_datum: szuletesi_datumRef.current.value,
-            ceg: cegRef.current.checked,
-            cegnev: cegRef.current.checked ? cegnevRef.current.value : null,
-            ceg_tipus: cegRef.current.checked ? cegTipusRef.current.value : null,
-            ado_szam: cegRef.current.checked ? adoSzamRef.current.value : null,
-            bankszamlaszam: cegRef.current.checked ? bankszamlaszamRef.current.value : null,
-            orszag: orszagRef.current.value,
-            iranyitoszam: iranyitoszamRef.current.value,
-            varos: varosRef.current.value,
-            utca: utcaRef.current.value,
-            utca_jellege: utcaJellegeRef.current.value,
-            hazszam: hazszamRef.current.value,
-            epulet: epuletRef.current.value,
-            lepcsohaz: lepcsohazRef.current.value,
-            emelet: emeletRef.current.value,
-            ajto: ajtoRef.current.value,
-        };
-        register(newUser)
-    }
-    //regisztracios függvény ami felhasználói adatokat vár eredményül
-    const register = async userData => {
-        const url = apiUrl + "/register";
-        const response = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify(userData),
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
+            const nev = nevRef.current.value;
+            const email = emailRef.current.value;
+            const jelszo = jelszoRef.current.value;
+            const jelszo_megerositese = jelszo_megerositeseRef.current.value;
+            const telefonszam = telefonszamRef.current.value;
+            const szemelyi_szam = szemelyiSzamRef.current.value;
+            const szuletesi_datum = szuletesi_datumRef.current.value;
+            const ceg = cegRef.current.checked;
+            const cegnev = cegRef.current.checked ? cegnevRef.current.value : null;
+            const ceg_tipus = cegRef.current.checked ? cegTipusRef.current.value : null;
+            const ado_szam = cegRef.current.checked ? adoSzamRef.current.value : null;
+            const bankszamlaszam = cegRef.current.checked ? bankszamlaszamRef.current.value : null;
+            const orszag = orszagRef.current.value;
+            const iranyitoszam = iranyitoszamRef.current.value;
+            const varos = varosRef.current.value;
+            const utca = utcaRef.current.value;
+            const utca_jellege = utcaJellegeRef.current.value;
+            const hazszam = hazszamRef.current.value;
+            const epulet = epuletRef.current.value;
+            const lepcsohaz = lepcsohazRef.current.value;
+            const emelet = emeletRef.current.value;
+            const ajto = ajtoRef.current.value;
+        
+            if (await register( nev, email, jelszo, jelszo_megerositese, telefonszam, szemelyi_szam, szuletesi_datum, ceg, cegnev, ceg_tipus, ado_szam, bankszamlaszam, orszag, iranyitoszam, varos, utca, utca_jellege, hazszam, epulet, lepcsohaz, emelet, ajto)){
+                navigate("/login");
             }
-        });
-        const data = await response.json();
-        console.log(data);
-        if (response.ok) {
-            alert("Sikeres regisztráció")
-            navigate("/login");
-        } else {
-            alert(data.message);
-        }
-    }
-
+    };
+ 
     return (<form onSubmit={handleformSubmit}>
         <h2>Regisztráció</h2>
         <div className="mb-3">

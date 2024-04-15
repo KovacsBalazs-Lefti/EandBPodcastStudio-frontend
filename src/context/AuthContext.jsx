@@ -53,7 +53,51 @@ export function AuthProvider(props) {
         authToken: authToken,
         user: user,
         error: error,
-        register: async () => { },
+        register: async (nev, email, jelszo, jelszo_megerositese, telefonszam, szemelyi_szam, szuletesi_datum, ceg, cegnev, ceg_tipus, ado_szam, bankszamlaszam, orszag, iranyitoszam, varos, utca, utca_jellege, hazszam, epulet, lepcsohaz, emelet, ajto
+        ) => {
+            const url = apiUrl + "/register";
+            const registerDTO = {
+                nev: nev,
+                email: email,
+                jelszo: jelszo,
+                jelszo_megerositese: jelszo_megerositese,
+                telefonszam: telefonszam,
+                szemelyi_szam: szemelyi_szam,
+                szuletesi_datum: szuletesi_datum,
+                ceg: ceg,
+                cegnev: cegnev,
+                ceg_tipus: ceg_tipus,
+                ado_szam: ado_szam,
+                bankszamlaszam: bankszamlaszam,
+                orszag: orszag,
+                iranyitoszam: iranyitoszam,
+                varos: varos,
+                utca: utca,
+                utca_jellege: utca_jellege,
+                hazszam: hazszam,
+                epulet: epulet,
+                lepcsohaz: lepcsohaz,
+                emelet: emelet,
+                ajto: ajto
+            }
+            const response = await fetch(url, {
+                method: "POST",
+                body: JSON.stringify(registerDTO),
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+            });
+            const data = await response.json();
+            if (response.ok) {
+                setError(null);
+                return true;
+            } else {
+                console.error(data);
+                setError(data.message);
+                return false;
+            }
+        },
         login: async (email, jelszo) => {
             const url = apiUrl + "/login";
             const loginDTO = {
@@ -74,6 +118,7 @@ export function AuthProvider(props) {
                 const token = data.token;
                 localStorage.setItem("token", token);
                 setauthToken(token)
+                setError(null);
                 alert("Sikeres bejelentkezés")
             } else {
                 console.error(data);
@@ -93,6 +138,7 @@ export function AuthProvider(props) {
             if (response.ok || response.status == 401) {
                 localStorage.removeItem("token");
                 setauthToken(null);
+                setError(null);
             }
             else {
                 const data = await response.json();
@@ -112,6 +158,7 @@ export function AuthProvider(props) {
             if (response.ok || response.status == 401) {
                 localStorage.removeItem("token");
                 setauthToken(null);
+                setError(null);
             }
             else {
                 const data = await response.json();
