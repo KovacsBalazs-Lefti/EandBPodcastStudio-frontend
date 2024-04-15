@@ -7,52 +7,27 @@ import { AuthContext } from "../context/AuthContext";
 function UserProfile(props) {
     const {refreshToken} = props;
     const apiUrl = "http://localhost:8000/api";
-    const [user, setUser] = useState(null);
     const navigate = useNavigate();
     const authContext = useContext (AuthContext);
+    const {user, authToken} = authContext;
     console.log(authContext);
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
-        if (token) {
-          loadUserData();
+        if (authToken) {
+          /* empty */
         } else {
           navigate("/login");
-          setUser(null);
+  
         }
-      }, []);
-
-      
-  const loadUserData = async () => {
-
-    const token = localStorage.getItem("token");
-    const url = apiUrl + "/user"
-    const response = await fetch(url, {
-      method: "GET",
-      headers: {
-        "Accept": "application/json",
-        "Authorization": "Bearer " + token,
-      },
-    });
-    const data = await response.json();
-    if (response.ok) {
-      setUser(data);
-    } else {
-      localStorage.removeItem("token");
-      refreshToken();
-      navigate("/login");
-    }
-  };
+      }, [authToken, navigate]);
 
     const logout = async () => {
-
-        const token = localStorage.getItem("token");
         const url = apiUrl + "/logout";
         const response = await fetch(url, {
           method: "POST",
           headers: {
             Accept: "application/json",
-            Authorization: "Bearer " + token
+            Authorization: "Bearer " + authToken
           }
         });
         
@@ -67,14 +42,12 @@ function UserProfile(props) {
       };
     
       const logoutEverywhere = async () => {
-        
-        const token = localStorage.removeItem("token");
         const url = apiUrl + "/logout-logoutEverywhere";
         const response = await fetch(url, {
           method: "POST",
           headers: {
             Accept: "application/json",
-            Authorization: "Bearer " + token
+            Authorization: "Bearer " + authToken
           }
         })
         if (response.ok) {
