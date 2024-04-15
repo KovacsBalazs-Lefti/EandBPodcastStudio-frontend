@@ -8,7 +8,7 @@ function LoginPage() {
   const jelszoRef = useRef(null);
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
-  const { login, authToken} = authContext;
+  const { login, authToken } = authContext;
 
 
   const handleformSubmit = (event) => {

@@ -64,7 +64,7 @@ export function AuthProvider(props) {
                 method: "POST",
                 body: JSON.stringify(loginDTO),
                 headers: {
-                    "Accept": "application/json",
+                    Accept: "application/json",
                     "Content-Type": "application/json",
                 },
             });

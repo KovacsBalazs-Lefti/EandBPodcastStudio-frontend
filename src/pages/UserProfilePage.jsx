@@ -10,7 +10,7 @@ function UserProfile() {
     console.log(authContext);
 
     useEffect(() => {
-        if (authToken) {
+        if (!authToken) {
           navigate("/login");
         } 
       }, [authToken, navigate]);
