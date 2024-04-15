@@ -27,7 +27,14 @@ function RegisterPage() {
     const ajtoRef = useRef(null);
     const navigate = useNavigate();
     const authContext = useContext(AuthContext);
-    const {register} = authContext;
+    const {register, authToken} = authContext;
+
+    //bejelentkezéskor a regisztrácios oldal tiltasa
+    useEffect(() => {
+        if (authToken){
+            navigate("/");
+        }
+    }, [authToken, navigate]);
 
     const handleformSubmit = async (event) => {
         event.preventDefault();
