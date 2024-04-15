@@ -8,20 +8,10 @@ import MyBookings from './pages/MyBookings';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
-import { useEffect, useState } from 'react';
 import { AuthProvider } from './context/AuthContext';
 
 function App() {
 
-  const [token, setToken] = useState(null);
-
-  const refreshToken = () => {
-    setToken(localStorage.getItem("token"));
-  }
-
-  useEffect(() => {
-    refreshToken();
-  },[]);
 
   const router = createBrowserRouter([
     {
@@ -30,11 +20,11 @@ function App() {
       children: [
         {
           path: "/",
-          element: <HomePage refreshToken={refreshToken} />,
+          element: <HomePage />,
         },
         {
           path: "/user-profile",
-          element: <UserProfilePage refreshToken={refreshToken} />,
+          element: <UserProfilePage />,
         },
         {
           path: "/register",
@@ -42,11 +32,11 @@ function App() {
         },
         {
           path: "/login",
-          element: <LoginPage refreshToken={refreshToken} />
+          element: <LoginPage />
         },
         {
           path: "/my-bookings",
-          element: <MyBookings refreshToken={refreshToken} />
+          element: <MyBookings />
         },
       ],
     },
