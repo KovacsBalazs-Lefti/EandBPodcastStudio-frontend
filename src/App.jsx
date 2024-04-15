@@ -44,7 +44,7 @@ function App() {
           element: <LoginPage refreshToken={refreshToken} />
         },
         {
-          path: "/foglalas",
+          path: "/my-bookings",
           element: <MyBookings refreshToken={refreshToken} />
         },
       ],

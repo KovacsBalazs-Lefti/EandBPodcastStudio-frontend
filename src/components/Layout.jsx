@@ -12,7 +12,9 @@ function Layout(props) {
 
     navbarLeftSide.push({to: "/", text: "Rólunk"});
     if (token) {
+        navbarLeftSide.push({to: "/my-bookings", text: "Foglalásaim"});
         navbarRightSide.push({to: "/user-profile", text: "Profil"});
+        
     } else{
         navbarRightSide.push({to: "/login", text: "Bejelentkezés"});
         navbarRightSide.push({to: "/register", text: "Regisztráció"});

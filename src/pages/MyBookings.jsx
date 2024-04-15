@@ -37,8 +37,8 @@ function MyBookings(props) {
 
 
     return  <div className="row">
-        {bookings.map((bookings) => (<div key={bookings.id} className="col">
-        <h4>{bookings.title}</h4>
+        {bookings.map((bookings) => (<div key={foglalasid} className="col">
+        <h4>{szolgatatasneve}</h4>
         </div>))}
     </div>;
 }
