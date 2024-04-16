@@ -44,6 +44,7 @@ function CreateBookingPage() {
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
+                    Authorization: "Bearer " + authToken,
                 },
             });
             if (response.ok) {
