@@ -12,6 +12,7 @@ function CreateBookingPage() {
     const { authToken } = useContext(AuthContext);
     const navigate = useNavigate();
     const [szolgaltatasok, setSzolgaltatasok] = useState([]);
+    const [selectedService, setSelectedService] = useState('');
 
     useEffect(() => {
         if (!authToken) {
@@ -23,7 +24,7 @@ function CreateBookingPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const szolgaltatasnev = szolgaltatasnevRef.current.value;
+        const szolgaltatasnev = selectedService;
         const letszam = letszamRef.current.value;
         const foglalaskezdete = foglalaskezdeteRef.current.value;
         const foglalashossza = foglalashosszaRef.current.value;
@@ -33,8 +34,7 @@ function CreateBookingPage() {
     };
 
     const handleSelectChange = (event) => {
-        // Szolgáltatás kiválasztása
-        setSzolgaltatasnev(event.target.value);
+        setSelectedService(event.target.value);
     };
 
     const fetchSzolgaltatasok = async () => {
@@ -102,6 +102,7 @@ function CreateBookingPage() {
             <div className="mb-3">
                 <label className="form-label" htmlFor="szolgaltatasnev">Szolgáltatás neve</label>
                 <select className="form-control" id="szolgaltatasnev" ref={szolgaltatasnevRef} onChange={handleSelectChange}>
+                    <option value="">Válassz...</option>
                     {szolgaltatasok.map(szolgaltatas => (
                         <option key={szolgaltatas.szolgaltatasid} value={szolgaltatas.szolgaltatasnev}>{szolgaltatas.szolgaltatasnev}</option>
                     ))}
