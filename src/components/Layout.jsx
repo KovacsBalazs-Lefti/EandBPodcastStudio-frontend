@@ -9,23 +9,26 @@ function Layout() {
     const {authToken, logout} = authContext;
     const navbarLeftSide = [];
     const navbarRightSide = [];
+    const navbarRightSideOthers = [];
 
     navbarLeftSide.push({to: "/", text: "Rólunk"});
     if (authToken) {
         navbarLeftSide.push({to: "/my-bookings", text: "Foglalásaim"});
         navbarLeftSide.push({to: "/create-bookings", text: "Új Foglalás felvétele"});
         navbarRightSide.push({to: "/user-profile", text: "Profil"});
+        navbarRightSideOthers.push(
+            <button className="nav-link" onClick={()=> logout()}>Kijelentkezés</button>
+        );
         
         
     } else{
         navbarRightSide.push({to: "/login", text: "Bejelentkezés"});
         navbarRightSide.push({to: "/register", text: "Regisztráció"});
-
     }
 
     return ( <>
-        <Navbar leftSide={navbarLeftSide} rightSide={navbarRightSide} />
-        <main className="container">
+        <Navbar leftSide={navbarLeftSide} rightSide={navbarRightSide} rightSideOthers={navbarRightSideOthers} />
+        <main className="container mt-2">
            <Outlet />
         </main>
     </> );

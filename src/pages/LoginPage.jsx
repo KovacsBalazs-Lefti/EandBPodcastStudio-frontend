@@ -23,7 +23,7 @@ function LoginPage() {
     }
   }, [authToken,navigate]);
 
-  return (<form style={{ marginTop: "5px", marginBottom: "5px" }} onSubmit={handleformSubmit}>
+  return (<form onSubmit={handleformSubmit}>
     <h2>Bejelentkezés</h2>
     <div className="mb-3">
       <label className="form-label" htmlFor="loginemail">Email</label>

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 function Navbar(props) {
-    const { leftSide, rightSide } = props;
+    const { leftSide, rightSide, rightSideOthers } = props;
     return (
         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div className="container-fluid">
@@ -26,7 +26,14 @@ function Navbar(props) {
                                     {navItem.text}
                                 </Link>
                             </li>)}
-
+                        {
+                            rightSideOthers.map(item => (
+                                <li
+                                    key = {item} className="nav-item">
+                                    {item}
+                                </li>
+                            ))
+                        }
                         </ul>
                     </div>
                 </div>
@@ -36,5 +43,10 @@ function Navbar(props) {
 Navbar.propTypes = {
     leftSide: PropTypes.array.isRequired,
     rightSide: PropTypes.array.isRequired,
+    rightSideOthers: PropTypes.array,
 }
+Navbar.DefaultProps ={
+    rightSideOthers:[]
+}
+
 export default Navbar;
