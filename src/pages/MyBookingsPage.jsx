@@ -7,7 +7,9 @@ function MyBookingsPage() {
     const navigate = useNavigate();
     const [bookings, setBookings] = useState(null);
     const authContext = useContext(AuthContext);
-    const { authToken, logout } = authContext;
+    const { authToken, logout } = useContext(AuthContext);
+
+ 
 
 
     useEffect(() => {

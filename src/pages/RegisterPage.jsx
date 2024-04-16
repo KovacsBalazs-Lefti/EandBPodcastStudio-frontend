@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
@@ -28,6 +28,8 @@ function RegisterPage() {
     const navigate = useNavigate();
     const authContext = useContext(AuthContext);
     const {register, authToken} = authContext;
+
+    const [isCeg, setIsCeg] = useState(false);
 
     //bejelentkezéskor a regisztrácios oldal tiltasa
     useEffect(() => {
@@ -98,10 +100,12 @@ function RegisterPage() {
             <input className="form-control" type="date" id="szuletesi_datum" placeholder="Születési dátum" ref={szuletesi_datumRef} />
         </div>
         <div className="mb-3">
-            <input className="form-label" type="checkbox" id="ceg" placeholder="Céggel regisztrálok" ref={cegRef} />
-            <label className="form-control" htmlFor="ceg">Céggel regisztrálok</label>
+            <input className="form-check-input" type="checkbox" id="ceg" placeholder="Céggel regisztrálok" checked={isCeg} onChange={() => setIsCeg(!isCeg)} ref={cegRef} />
+            <label className="form-check-label" htmlFor="ceg">Céggel regisztrálok</label>
         </div>
-        <div className="mb-3">
+        {isCeg && (
+            <>
+            <div className="mb-3">
             <label className="form-label" htmlFor="cegnev">Cégnév</label>
             <input className="form-control" type="text" id="cegnev" placeholder="Cégnév" ref={cegnevRef} />
         </div>
@@ -117,6 +121,9 @@ function RegisterPage() {
             <label className="form-label" htmlFor="bankszamlaszam">Bankszámlaszám</label>
             <input className="form-control" type="text" id="bankszamlaszam" placeholder="Bankszámlaszám" ref={bankszamlaszamRef} />
         </div>
+            </>
+        )}
+        
         <div className="mb-3">
             <label className="form-label" htmlFor="orszag">Ország</label>
             <input className="form-control" type="text" id="orszag" placeholder="Ország" ref={orszagRef} />
