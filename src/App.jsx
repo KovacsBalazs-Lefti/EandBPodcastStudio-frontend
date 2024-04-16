@@ -40,7 +40,7 @@ function App() {
           element: <MyBookingsPage />
         },
         {
-          path: "create-bookings",
+          path: "/create-bookings",
           element: <CreateBookingPage />        
         },
       ],
