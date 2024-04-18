@@ -1,16 +1,30 @@
 import PropTypes from "prop-types";
-function  BookingTable(props) {
-    const {bookings} = props;
-    return ( 
-        <tr>
-            <td>
+function BookingTable(props) {
+    const { booking } = props;
 
-            </td>
-        </tr>
+    return (
+        <table className="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Szolgáltatás neve</th>
+                    <th scope="col">Szolgáltatás kezdete</th>
+                    <th scope="col">Foglalás hossza</th>
+                    <th scope="col">Megjegyzés</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{booking.szolgaltatasnev}</td>
+                    <td>{booking.foglalaskezdete}</td>
+                    <td>{booking.foglalashossza}</td>
+                    <td>{booking.megjegyzes}</td>
+                </tr>
+            </tbody>
+        </table>
     );
 }
 
 BookingTable.propTypes = {
-    bookings: PropTypes.object.isRequired
+    booking: PropTypes.object.isRequired
 }
-export default BookingTable ;
+export default BookingTable;

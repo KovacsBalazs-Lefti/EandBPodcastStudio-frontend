@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import BookingList from "../components/BookingList";
 
 function MyBookingsPage() {
     const apiUrl = "http://localhost:8000/api";
@@ -45,15 +46,7 @@ function MyBookingsPage() {
                     {bookings.length == 0 ? (
                         <p>Még nincs felvéve hirdetés</p>
                     ) : (
-                        <div className="row">
-                            {bookings.map((bookings) => (
-                                <div key={bookings.foglalasid} className="col">
-                                    <h4>{bookings.szolgaltatasnev}</h4>
-                                    <h5> Foglalas kezdete: {bookings.foglalaskezdete}</h5>
-                                    <h5> Foglalas hossza: {bookings.foglalashossza} óra</h5>
-                                </div>
-                            ))}
-                        </div>
+                       <BookingList bookings={bookings}/>
                     )}
                 </>
             ) : (
