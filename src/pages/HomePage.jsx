@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 function HomePage() {
+    const apiURL = import.meta.env.VITE_BACKEND_URL+"api";
 
     useEffect(() => {
       
@@ -9,4 +10,4 @@ function HomePage() {
     </> );
 }
 
-export default HomePage;
+export default HomePage; 

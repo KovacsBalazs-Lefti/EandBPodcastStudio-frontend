@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import BookingList from "../components/BookingList";
 
 function MyBookingsPage() {
-    const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
+    const apiUrl = import.meta.env.VITE_BACKEND_URL+"api";
     const navigate = useNavigate();
     const [bookings, setBookings] = useState(null);
     const authContext = useContext(AuthContext);
@@ -33,7 +33,7 @@ function MyBookingsPage() {
         } else {
             navigate("/login");
         }
-    }, [authToken, logout, navigate]);
+    }, [apiUrl, authToken, logout, navigate]);
 
 
     return (
@@ -46,7 +46,7 @@ function MyBookingsPage() {
                     {bookings.length == 0 ? (
                         <p>Még nincs felvéve hirdetés</p>
                     ) : (
-                       <BookingList bookings={bookings}/>
+                       <BookingList bookings={bookings} mybookings={true}/>
                     )}
                 </>
             ) : (

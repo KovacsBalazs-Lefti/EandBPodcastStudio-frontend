@@ -8,10 +8,6 @@ function BookingTable(props) {
                     <td>{booking.foglalaskezdete}</td>
                     <td>{booking.foglalashossza}</td>
                     <td>{booking.megjegyzes}</td>
-                    <td className="d-grid gap-2 d-md-block">
-                        <button className="btn btn-primary" type="button">módosítá</button>
-                        <button className="btn btn-primary" type="button">módosítá</button>
-                    </td>
                 </tr>
     );
 }

@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 
 //komponones létrehozása, amit az appban felhasznalok majd
 export function AuthProvider(props) {
-    const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
+    const apiUrl = import.meta.env.VITE_BACKEND_URL+"api";
     const { children } = props;
     const [authToken, setauthToken] = useState(null);
     const [user, setUser] = useState(null);
@@ -112,6 +112,7 @@ export function AuthProvider(props) {
                     "Content-Type": "application/json",
                 },
             });
+            console.log(response);
             const data = await response.json();
             if (response.ok) {
                 const token = data.token;
@@ -120,6 +121,7 @@ export function AuthProvider(props) {
                 setError(null);
                 alert("Sikeres bejelentkezés")
             } else {
+                console.log(data);
                 console.error(data);
                 setError(data.message);
             }

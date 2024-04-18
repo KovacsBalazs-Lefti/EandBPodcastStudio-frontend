@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import BookingTable from "./BookingTable";
 
 function BookingList(props) {
-    const { bookings } = props;
+    const { bookings, mybookings} = props;
 
     return (<table className="table table-dark">
         <thead>
@@ -14,7 +14,16 @@ function BookingList(props) {
             </tr>
         </thead>
         <tbody>
-            {bookings.map(booking => <BookingTable key={booking.foglalasid} booking={booking} />)};
+            {bookings.map(booking => (
+                mybookings ?
+            <BookingTable 
+            key={booking.foglalasid} 
+            booking={booking} />
+            :
+            <BookingTable 
+            key={booking.foglalasid} 
+            booking={booking} />
+            ))};
         </tbody>
 
     </table>);
@@ -23,10 +32,12 @@ function BookingList(props) {
 
 BookingList.propTypes = {
     bookings: PropTypes.array,
+    mybookings: PropTypes.bool
 }
 
 BookingList.defaultProps = {
-    bookings: []
+    bookings: [],
+    mybookings: false
 }
 
 
