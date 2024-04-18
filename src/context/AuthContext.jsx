@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 
 //komponones létrehozása, amit az appban felhasznalok majd
 export function AuthProvider(props) {
-    const apiUrl = "http://localhost:8000/api";
+    const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
     const { children } = props;
     const [authToken, setauthToken] = useState(null);
     const [user, setUser] = useState(null);

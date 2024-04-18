@@ -4,7 +4,7 @@ import BookingTable from "./BookingTable";
 function BookingList(props) {
     const { bookings } = props;
 
-    return (<table className="table">
+    return (<table className="table table-dark">
         <thead>
             <tr>
                 <th scope="col">Szolgáltatás neve</th>

@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import BookingList from "../components/BookingList";
 
 function MyBookingsPage() {
-    const apiUrl = "http://localhost:8000/api";
+    const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
     const navigate = useNavigate();
     const [bookings, setBookings] = useState(null);
     const authContext = useContext(AuthContext);
