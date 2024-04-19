@@ -148,7 +148,7 @@ function UpdateBookingPage() {
                 <textarea className="form-control" name="megjegyzes" id="megjegyzes" cols="30" rows="10" ref={megjegyzesRef}></textarea>
             </div>
             <div className="d-grid">
-                <button className="btn btn-primary">Módosítás</button>
+                <button className="btn btn-outline-danger">Módosítás</button>
             </div>
         </form>
     );
