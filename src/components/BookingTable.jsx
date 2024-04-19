@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 function BookingTable(props) {
     const { booking } = props;
 
@@ -8,9 +9,11 @@ function BookingTable(props) {
                     <td>{booking.foglalaskezdete}</td>
                     <td>{booking.foglalashossza}</td>
                     <td>{booking.megjegyzes}</td>
-                    <td className="d-grid gap-2 d-md-block">
-                        <button className="btn btn-primary" type="button">módosítá</button>
-                        <button className="btn btn-primary" type="button">módosítá</button>
+                    <td>
+                        <Link className="btn btn-outline-secondary" type="button" to={"/update-bookings/" + booking.foglalasid}>Módosítás</Link> 
+                    </td>
+                    <td>
+                        <button className="btn btn-outline-danger" type="button">törlés</button>
                     </td>
                 </tr>
     );

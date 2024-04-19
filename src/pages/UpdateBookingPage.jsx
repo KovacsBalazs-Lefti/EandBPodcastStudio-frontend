@@ -1,8 +1,9 @@
+
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 
-function CreateBookingPage() {
+function UpdateBookingPage() {
     const apiUrl = import.meta.env.VITE_BACKEND_URL+"api";
     const szolgaltatasnevRef = useRef(null);
     const letszamRef = useRef(null);
@@ -13,6 +14,34 @@ function CreateBookingPage() {
     const navigate = useNavigate();
     const [szolgaltatasok, setSzolgaltatasok] = useState([]);
     const [selectedService, setSelectedService] = useState('');
+    //ebből kérdezem le milyen paraméterek vannak az url-be
+    const params = useParams();
+    const user_felhasznaloid = params.user_felhasznaloid;
+
+    //betöltése az űrlapadoknak, amikor az id-értéke valtozik
+    useEffect(() => {
+        const loadBookingsData = async () => {
+            const response = await fetch(apiUrl+"/foglalas/"+ user_felhasznaloid,{
+                method: "GET",
+                headers: {
+                    Accept: "application/json",
+                    Authorization: "Bearer " + authToken
+                }
+            });
+            if (response.status == 403){
+                navigate("/my-bookings");
+            } else if (response.ok) {
+                const data = await response.json();
+                szolgaltatasnevRef.current.value = data.szolgaltatasnev;
+                letszamRef.current.value = data.letszam;
+                foglalaskezdeteRef.current.value = data.foglalaskezdete;
+                foglalashosszaRef.current.value = data.foglalashossza;
+                megjegyzesRef.current.value = data.megjegyzes;
+            }
+        }
+        loadBookingsData();
+        
+    }, [user_felhasznaloid, apiUrl, authToken, navigate])
 
     useEffect(() => {
         if (!authToken) {
@@ -29,7 +58,7 @@ function CreateBookingPage() {
         const foglalaskezdete = foglalaskezdeteRef.current.value;
         const foglalashossza = foglalashosszaRef.current.value;
         const megjegyzes = megjegyzesRef.current.value;
-        await createBookings(szolgaltatasnev, letszam, foglalaskezdete, foglalashossza, megjegyzes);
+        await updateBookings(szolgaltatasnev, letszam, foglalaskezdete, foglalashossza, megjegyzes);
         fetchSzolgaltatasok(); // Frissítsd a szolgáltatásokat a foglalás létrehozása után
     };
 
@@ -58,17 +87,19 @@ function CreateBookingPage() {
         }
     };
 
-    const createBookings = async (szolgaltatasnev, letszam, foglalaskezdete, foglalashossza, megjegyzes) => {
+    const updateBookings = async (szolgaltatasnev, letszam, foglalaskezdete, foglalashossza, megjegyzes) => {
         try {
-            const response = await fetch(apiUrl + "/foglalas", {
-                method: "POST",
-                body: JSON.stringify({
-                    szolgaltatasnev,
-                    letszam,
-                    foglalaskezdete,
-                    foglalashossza,
-                    megjegyzes,
-                }),
+            const url = apiUrl + "/foglalas/"+ user_felhasznaloid;
+            const bookingsDTO = {
+                    szolgaltatasnev: szolgaltatasnev,
+                    letszam: letszam,
+                    foglalaskezdete: foglalaskezdete,
+                    foglalashossza: foglalashossza,
+                    megjegyzes: megjegyzes,
+            }
+            const response = await fetch(url, {
+                method: "PATCH",
+                body: JSON.stringify(bookingsDTO),
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
@@ -79,8 +110,8 @@ function CreateBookingPage() {
                 const data = await response.json();
                 throw new Error(data.message);
             } else {
-                alert("Sikeres felvétel");
-                clearForm();
+                alert("Sikeres módosítás");
+                navigate("/my-bookings");
             }
         } catch (error) {
             console.error(error);
@@ -88,17 +119,9 @@ function CreateBookingPage() {
         }
     };
 
-    const clearForm = () => {
-        szolgaltatasnevRef.current.value = "";
-        letszamRef.current.value = "";
-        foglalaskezdeteRef.current.value = "";
-        foglalashosszaRef.current.value = "";
-        megjegyzesRef.current.value = "";
-    };
-
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Új Foglalás felvétele</h2>
+            <h2>Foglalás módosítása</h2>
             <div className="mb-3">
                 <label className="form-label" htmlFor="szolgaltatasnev">Szolgáltatás neve</label>
                 <select className="form-control" id="szolgaltatasnev" ref={szolgaltatasnevRef} onChange={handleSelectChange}>
@@ -118,17 +141,17 @@ function CreateBookingPage() {
             </div>
             <div className="mb-3">
                 <label htmlFor="foglalashossza">Foglalás hossza</label>
-                <input className="form-control" type="number" id="foglalashossza" placeholder="Foglalás hossza" ref={foglalashosszaRef} />
+                <input className="form-control" type="text" id="foglalashossza" placeholder="Foglalás hossza" ref={foglalashosszaRef} />
             </div>
             <div className="mb-3">
                 <label htmlFor="megjegyzes">Megjegyzés</label>
                 <textarea className="form-control" name="megjegyzes" id="megjegyzes" cols="30" rows="10" ref={megjegyzesRef}></textarea>
             </div>
             <div className="d-grid">
-                <button className="btn btn-primary">Felvétel</button>
+                <button className="btn btn-primary">Módosítás</button>
             </div>
         </form>
     );
 }
 
-export default CreateBookingPage;
+export default UpdateBookingPage;

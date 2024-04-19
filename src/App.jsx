@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import { AuthProvider } from './context/AuthContext';
 import MyBookingsPage from './pages/MyBookingsPage';
 import CreateBookingPage from './pages/CreateBookingPage';
+import UpdateBookingPage from './pages/UpdateBookingPage';
 
 function App() {
 
@@ -42,6 +43,10 @@ function App() {
         {
           path: "/create-bookings",
           element: <CreateBookingPage />        
+        },
+        {
+          path: "/update-bookings/:user_felhasznaloid",
+          element: <UpdateBookingPage/>        
         },
       ],
     },
