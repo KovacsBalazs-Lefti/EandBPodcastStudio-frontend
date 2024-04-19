@@ -174,6 +174,7 @@ export function AuthProvider(props) {
     </AuthContext.Provider>
 }
 
+
 AuthProvider.propTypes = {
     children: PropTypes.node
 }

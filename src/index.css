@@ -7,4 +7,14 @@ body {
     text-align: left;
   }
 
+td {
+    text-align: center;
+  }
+thead {
+    text-align: center;
+  }
+nav{
+  font-family:"Roboto Condensed";
+}
+
   

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 function Navbar(props) {
     const { leftSide, rightSide, rightSideOthers } = props;
     return (
-        <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
             <div className="container-fluid">
 
                 <div className="container-fluid">

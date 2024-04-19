@@ -53,7 +53,7 @@ function UpdateBookingPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const szolgaltatasnev = selectedService;
+        const szolgaltatasnev = szolgaltatasnevRef.current.value;
         const letszam = letszamRef.current.value;
         const foglalaskezdete = foglalaskezdeteRef.current.value;
         const foglalashossza = foglalashosszaRef.current.value;
@@ -63,7 +63,11 @@ function UpdateBookingPage() {
     };
 
     const handleSelectChange = (event) => {
-        setSelectedService(event.target.value);
+        setSelectedService(data.szolgaltatasnev); // Állapot beállítása a meglévő szolgáltatásnévre
+        letszamRef.current.value = data.letszam;
+        foglalaskezdeteRef.current.value = data.foglalaskezdete;
+        foglalashosszaRef.current.value = data.foglalashossza;
+        megjegyzesRef.current.value = data.megjegyzes;
     };
 
     const fetchSzolgaltatasok = async () => {
