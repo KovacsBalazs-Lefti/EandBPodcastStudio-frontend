@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Header from "./Header";
 import { useContext } from "react";
 import {Outlet} from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
@@ -28,7 +29,9 @@ function Layout() {
 
     return ( <>
         <Navbar leftSide={navbarLeftSide} rightSide={navbarRightSide} rightSideOthers={navbarRightSideOthers} />
+        <Header />
         <main className="container mt-2">
+            
            <Outlet />
         </main>
     </> );
