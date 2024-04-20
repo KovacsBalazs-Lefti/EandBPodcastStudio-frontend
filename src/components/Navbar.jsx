@@ -5,10 +5,7 @@ function Navbar(props) {
     const { leftSide, rightSide, rightSideOthers } = props;
     return (
         <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
-            <div className="container-fluid">
-                <a className="navbar-brand" href="#">
-                    <img src="/images/logo_podcast_icon150white.svg" width="70" height="50" class="d-inline-block align-top" alt=""/>
-                </a>
+            <div className="container-fluid">   
                 <button
                     className="navbar-toggler"
                     type="button"
