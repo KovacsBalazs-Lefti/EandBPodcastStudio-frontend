@@ -12,7 +12,7 @@ function Layout() {
     const navbarRightSide = [];
     const navbarRightSideOthers = [];
 
-    navbarLeftSide.push({ImgLogo: <img src="/images/logoblack.jpg" alt="Logo" style={{ height: '150px', width: 'auto', maxWidth: '100%' }} />, to: "/"});
+    navbarLeftSide.push({ImgLogo: <img src="/images/logoblack.png" alt="Logo" style={{ height: '150px', width: 'auto', maxWidth: '100%' }} />, to: "/"});
     navbarLeftSide.push({to: "/", text: "Rólunk"});
 
     if (authToken) {
@@ -29,15 +29,20 @@ function Layout() {
         navbarRightSide.push({to: "/register", text: "Regisztráció"});
     }
 
-    return ( <>
+    return ( 
         
-        <main className="container mt-2">
+        <main className="container-fluid main">
         <div className="Header-img">
         <Navbar leftSide={navbarLeftSide} rightSide={navbarRightSide} rightSideOthers={navbarRightSideOthers} />
+        <div>
+            <h1 className="main-headingtitle">A <span className="ChangeHeadText"> NEKED </span> SZÓLÓ <br /> ÉLMÉNY</h1>
+            <h2 className="main-headingtitle2"> PODCAST<span className="ChangeHeadText">/STÚDIÓBÉRLÉS</span></h2>
+            <h2 className="main-headingtitle2">TEL: 06 30 337 9962</h2>
+        </div>
         </div>
            <Outlet />
         </main>
-    </> );
+     );
 }
 
 
