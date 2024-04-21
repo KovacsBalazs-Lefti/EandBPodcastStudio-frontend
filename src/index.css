@@ -1,30 +1,44 @@
-
 body {
-    background-color: #000000;
-    color: white;
-    padding: 40px;
-    font-family: "Roboto Condensed", Sans-Serif;
-    text-align: left;
-  }
+  background-color: #000000;
+  color: white;
+  padding: 40px;
+  font-family: "Roboto Condensed", Sans-Serif;
+  text-align: left;
+}
 
 td {
-    text-align: center;
-  }
-thead {
-    text-align: center;
-  }
-nav{
-  height: 50px;
-  font-family:"Roboto Condensed";
- 
-}
-.navbar-brand img {
-  width: 40 px;
-  height: 40 px;
-  margin-right: 15 px;
-}
-img {
-  min-width: 100%;
-  padding: 40px;
+  text-align: center;
 }
 
+nav {
+  font-family: "Roboto Condensed";
+  overflow: hidden;
+}
+
+.Header-img {
+  background-image: url("/images/headers.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.card {
+  width: 18rem;
+  background-color: black;
+}
+
+.card-img-top {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-body {
+  color: white;
+  /* példa szövegszín */
+}
+
+.logo-img {
+  height: 40;
+  width: 70;
+}
