@@ -17,9 +17,8 @@ function Navbar(props) {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                         >
-                        <span className="navbar-toggler-icon "></span>
+                        <span className="navbar-toggler-icon " ></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{ padding: "10px"}} >
                     <ul className="navbar-nav me-auto mb2 mb-lg-0">
                             {leftSide.map((navItem) => (<li key={navItem.key} className="nav-item">
                                 <Link className="nav-link" to={navItem.to}>
@@ -28,7 +27,8 @@ function Navbar(props) {
                             </li>
                             ))}
                         </ul>
-                        
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{ padding: "10px"}} >
+
                         <ul className="navbar-nav me-auto mb2 mb-lg-0">
                             {leftSide.map((navItem) => (<li key={navItem.key} className="nav-item">
                                 <Link className="nav-link" to={navItem.to}>
