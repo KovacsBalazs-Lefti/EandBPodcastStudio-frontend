@@ -3,16 +3,17 @@
     font-size: 4vw;
     align-items: center;
   }
+
   @media only screen and (max-width: 768px) {
     .main-headingtitle {
-      font-size: 6vw; 
-      text-align: center; 
-      line-height: 1.2; 
+      font-size: 6vw;
+      text-align: center;
+      line-height: 1.2;
     }
-  
+
     .ChangeHeadText {
-      display: block; 
-      text-align: center; 
+      display: block;
+      text-align: center;
     }
   }
 }
@@ -61,31 +62,36 @@ nav {
   height: 40;
   width: 70;
 }
-h1{
+
+h1 {
   padding-top: 50px;
   padding-bottom: 50px;
-  
+
 }
+
 .ChangeHeadText {
   color: #297CA4;
   font-family: "Roboto Condensed";
   font-style: italic;
   font-weight: bold;
 }
+
 .main-headingtitle {
   padding: 50px;
   font-size: 90px;
   font-style: italic;
   font-weight: bold;
 }
-.main-headingtitle2{
+
+.main-headingtitle2 {
   padding-left: 50px;
 
   font-size: 40px;
   font-style: italic;
   font-weight: bold;
 }
-.main-headingtitle3{
+
+.main-headingtitle3 {
   padding-left: 50px;
   text-align: center;
   font-size: 40px;
@@ -93,6 +99,7 @@ h1{
   font-weight: bold;
   padding-top: 50px;
 }
+
 h3 {
   font-family: "Roboto Condensed";
   font-size: 20px;
@@ -100,6 +107,7 @@ h3 {
   text-align: justify;
   padding: 20px;
 }
+
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
