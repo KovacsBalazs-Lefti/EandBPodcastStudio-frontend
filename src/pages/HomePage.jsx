@@ -1,12 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Services from "../components/Services";
+import ServicesList from "../components/ServicesList";
 
 function HomePage() {
     const apiURL = import.meta.env.VITE_BACKEND_URL + "api";
+    const [szolgaltatasok, setSzolgaltatasok] = useState([]);
 
     useEffect(() => {
-
+        const fetchSzolgaltatasok = async () => {
+            try {
+                const response = await fetch("http://localhost:8000/api/szolgaltatasok/all");
+                if(response.ok){
+                    const data = await response.json();
+                    setSzolgaltatasok(data);
+                } else{
+                    console.error("A szolgáltatások lekérése sikertelen.");
+                }
+            } catch (error) {
+                console.error("Hiba történte a szolgáltatások lekérése közben:", error);
+            }
+        };
+        fetchSzolgaltatasok();
     }, []);
+
+
+
+
 
     return (<div>
 
@@ -50,7 +69,7 @@ function HomePage() {
 
             </div>
             <div className="container">
-                <Services />
+                <ServicesList szolgaltatasok={szolgaltatasok}/>
             </div>
             <div className="col-lg-6 mx-auto" style={{ fontStyle: "italic", fontWeight: "bold" }}>
             <div>
