@@ -1,4 +1,4 @@
-import {useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
@@ -18,23 +18,32 @@ function LoginPage() {
     login(email, jelszo);
   };
   useEffect(() => {
-    if (authToken){
+    if (authToken) {
       navigate("/user-profile")
     }
-  }, [authToken,navigate]);
+  }, [authToken, navigate]);
 
-  return (<form onSubmit={handleformSubmit}>
-    <h2>Bejelentkezés</h2>
-    <div className="mb-3">
-      <label className="form-label" htmlFor="loginemail">Email</label>
-      <input className="form-control" type="email" id="loginemail" placeholder="email" ref={emailRef} />
+  return (
+    <div className="container">
+      <h2 className="main-headingtitle3"> BEJELENTKEZÉS<span className="ChangeHeadText">/STÚDIÓBÉRLÉSRE</span></h2>
+      <div className="row justify-content-center" style={{padding:100}}>
+        <div className="col-md-6">
+          <form onSubmit={handleformSubmit}>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="loginemail">Email</label>
+              <input className="form-control" type="email" id="loginemail" placeholder="email" ref={emailRef} />
+            </div>
+            <div className="mb-3">
+              <label className="form-label" htmlFor="loginjelszo">Jelszó</label>
+              <input className="form-control" type="password" id="loginjelszo" placeholder="jelszo" ref={jelszoRef} />
+            </div>
+            <button className="btn btn-primary" type="submit">Bejelentkezés</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <div className="mb-3">
-      <label className="form-label" htmlFor="loginjelszo">Jelszó</label>
-      <input className="form-control" type="password" id="loginjelszo" placeholder="jelszo" ref={jelszoRef} />
-    </div>
-    <button className="btn btn-primary" type="submit">Bejelentkezés</button>
-  </form>);
+    );
+  
 };
 
 export default LoginPage;

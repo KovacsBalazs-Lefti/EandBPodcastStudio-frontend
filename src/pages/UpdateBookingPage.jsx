@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 
 function UpdateBookingPage() {
-    const apiUrl = import.meta.env.VITE_BACKEND_URL+"api";
+    const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
     const szolgaltatasnevRef = useRef(null);
     const letszamRef = useRef(null);
     const foglalaskezdeteRef = useRef(null);
@@ -21,14 +21,14 @@ function UpdateBookingPage() {
     //betöltése az űrlapadoknak, amikor az id-értéke valtozik
     useEffect(() => {
         const loadBookingsData = async () => {
-            const response = await fetch(apiUrl+"/foglalas/"+ user_felhasznaloid,{
+            const response = await fetch(apiUrl + "/foglalas/" + user_felhasznaloid, {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
                     Authorization: "Bearer " + authToken
                 }
             });
-            if (response.status == 403){
+            if (response.status == 403) {
                 navigate("/my-bookings");
             } else if (response.ok) {
                 const data = await response.json();
@@ -40,7 +40,7 @@ function UpdateBookingPage() {
             }
         }
         loadBookingsData();
-        
+
     }, [user_felhasznaloid, apiUrl, authToken, navigate])
 
     useEffect(() => {
@@ -93,13 +93,13 @@ function UpdateBookingPage() {
 
     const updateBookings = async (szolgaltatasnev, letszam, foglalaskezdete, foglalashossza, megjegyzes) => {
         try {
-            const url = apiUrl + "/foglalas/"+ user_felhasznaloid;
+            const url = apiUrl + "/foglalas/" + user_felhasznaloid;
             const bookingsDTO = {
-                    szolgaltatasnev: szolgaltatasnev,
-                    letszam: letszam,
-                    foglalaskezdete: foglalaskezdete,
-                    foglalashossza: foglalashossza,
-                    megjegyzes: megjegyzes,
+                szolgaltatasnev: szolgaltatasnev,
+                letszam: letszam,
+                foglalaskezdete: foglalaskezdete,
+                foglalashossza: foglalashossza,
+                megjegyzes: megjegyzes,
             }
             const response = await fetch(url, {
                 method: "PATCH",
@@ -124,37 +124,41 @@ function UpdateBookingPage() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Foglalás módosítása</h2>
-            <div className="mb-3">
-                <label className="form-label" htmlFor="szolgaltatasnev">Szolgáltatás neve</label>
-                <select className="form-control" id="szolgaltatasnev" ref={szolgaltatasnevRef} onChange={handleSelectChange}>
-                    <option value="">Válassz...</option>
-                    {szolgaltatasok.map(szolgaltatas => (
-                        <option key={szolgaltatas.szolgaltatasid} value={szolgaltatas.szolgaltatasnev}>{szolgaltatas.szolgaltatasnev}</option>
-                    ))}
-                </select>
+      
+            <div className="row justify-content-center" style={{ padding: 100 }}>
+                <form onSubmit={handleSubmit}>
+                    <h2>Foglalás módosítása</h2>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="szolgaltatasnev">Szolgáltatás neve</label>
+                        <select className="form-control" id="szolgaltatasnev" ref={szolgaltatasnevRef} onChange={handleSelectChange}>
+                            <option value="">Válassz...</option>
+                            {szolgaltatasok.map(szolgaltatas => (
+                                <option key={szolgaltatas.szolgaltatasid} value={szolgaltatas.szolgaltatasnev}>{szolgaltatas.szolgaltatasnev}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="letszam">Létszám</label>
+                        <input className="form-control" type="number" id="letszam" placeholder="Adja meg hány fő érkezik" ref={letszamRef} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="foglalaskezdete">Foglalás kezdete</label>
+                        <input className="form-control" type="datetime-local" id="foglalaskezdete" placeholder="Foglalás kezdete" ref={foglalaskezdeteRef} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="foglalashossza">Foglalás hossza</label>
+                        <input className="form-control" type="text" id="foglalashossza" placeholder="Foglalás hossza" ref={foglalashosszaRef} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="megjegyzes">Megjegyzés</label>
+                        <textarea className="form-control" name="megjegyzes" id="megjegyzes" cols="30" rows="10" ref={megjegyzesRef}></textarea>
+                    </div>
+                    <div className="d-grid">
+                        <button className="btn btn-outline-danger">Módosítás</button>
+                    </div>
+                </form>
             </div>
-            <div className="mb-3">
-                <label className="form-label" htmlFor="letszam">Létszám</label>
-                <input className="form-control" type="number" id="letszam" placeholder="Adja meg hány fő érkezik" ref={letszamRef} />
-            </div>
-            <div className="mb-3">
-                <label className="form-label" htmlFor="foglalaskezdete">Foglalás kezdete</label>
-                <input className="form-control" type="datetime-local" id="foglalaskezdete" placeholder="Foglalás kezdete" ref={foglalaskezdeteRef} />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="foglalashossza">Foglalás hossza</label>
-                <input className="form-control" type="text" id="foglalashossza" placeholder="Foglalás hossza" ref={foglalashosszaRef} />
-            </div>
-            <div className="mb-3">
-                <label htmlFor="megjegyzes">Megjegyzés</label>
-                <textarea className="form-control" name="megjegyzes" id="megjegyzes" cols="30" rows="10" ref={megjegyzesRef}></textarea>
-            </div>
-            <div className="d-grid">
-                <button className="btn btn-outline-danger">Módosítás</button>
-            </div>
-        </form>
+
     );
 }
 

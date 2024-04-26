@@ -1,16 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import BookingList from "../components/BookingList";
+import  BookingList from "../components/BookingList";
 
 function MyBookingsPage() {
-    const apiUrl = import.meta.env.VITE_BACKEND_URL+"api";
+    const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
     const navigate = useNavigate();
     const [bookings, setBookings] = useState(null);
     const authContext = useContext(AuthContext);
     const { authToken, logout } = useContext(AuthContext);
-
- 
 
 
     useEffect(() => {
@@ -28,10 +26,14 @@ function MyBookingsPage() {
                 logout();
             }
         };
-        if (authToken) {
-            loadBookings();
-        } else {
+        if (authToken===null) {
             navigate("/login");
+            
+        }else if(authToken==undefined){
+
+        }
+         else {
+            loadBookings();
         }
     }, [apiUrl, authToken, logout, navigate]);
 
@@ -42,11 +44,14 @@ function MyBookingsPage() {
 
             {bookings ? (
                 <>
-                    <h2>Foglalásaim</h2>
+                    <h1 className="main-headingtitle3"> PODCASTSÚDIÓ<span className="ChangeHeadText">/FOGLALÁSAIM</span></h1>
+                    
                     {bookings.length == 0 ? (
                         <p>Még nincs felvéve hirdetés</p>
                     ) : (
-                       <BookingList bookings={bookings} mybookings={true}/>
+                        <div className="container">
+                        <BookingList bookings={bookings} mybookings={true} />
+                        </div>
                     )}
                 </>
             ) : (

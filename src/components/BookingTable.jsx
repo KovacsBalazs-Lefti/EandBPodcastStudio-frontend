@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Link, Navigate } from "react-router-dom";
 import { AuthContext} from "../context/AuthContext";
 import { useContext } from "react";
+import MyBookingsPage from "../pages/MyBookingsPage";
 
 
 function BookingTable(props) {
@@ -14,6 +15,7 @@ function BookingTable(props) {
             if (booking) {
                 deleteBookingdatas();
                 window.location.reload();
+                
         
             } else {
                 console.log("A foglalás nem található");

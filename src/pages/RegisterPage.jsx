@@ -64,7 +64,7 @@ function RegisterPage() {
         const emelet = emeletRef.current.value;
         const ajto = ajtoRef.current.value;
 
-        if (await register(nev, email, jelszo, jelszo_megerositese, telefonszam, szemelyi_szam, szuletesi_datum, ceg, cegnev, ceg_tipus, ado_szam, bankszamlaszam, orszag, iranyitoszam, varos, utca, utca_jellege, hazszam, epulet, lepcsohaz, emelet, ajto)) {
+        if (await register(nev, email, jelszo, jelszo_megerositese, telefonszam, szemelyi_szam, szuletesi_datum, ceg, cegnev, ceg_tipus, ado_szam, bankszamlaszam, orszag, iranyitoszam, varos, utca, utca_jellege, hazszam, epulet, lepcsohaz, emelet, ajto,)) {
             navigate("/login");
         }
     };

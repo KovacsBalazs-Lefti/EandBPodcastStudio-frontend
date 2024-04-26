@@ -8,7 +8,7 @@ export const AuthContext = createContext();
 export function AuthProvider(props) {
     const apiUrl = import.meta.env.VITE_BACKEND_URL+"api";
     const { children } = props;
-    const [authToken, setauthToken] = useState(null);
+    const [authToken, setauthToken] = useState(undefined);
     const [user, setUser] = useState(null);
     const [error, setError] = useState(null);
 
