@@ -10,10 +10,10 @@ function BookingTable(props) {
     const apiUrl = import.meta.env.VITE_BACKEND_URL+"api";
     const { authToken } = useContext(AuthContext);
 
-    const handleDelete = () => {
+    const handleDelete = async() => {
         if (window.confirm("Biztosan törölni szeretné ezt a foglalást")) {
             if (booking) {
-                deleteBookingdatas();
+                await deleteBookingdatas();
                 window.location.reload();
                 
         
