@@ -3,7 +3,7 @@ import Services from "../components/Services";
 import ServicesList from "../components/ServicesList";
 
 function HomePage() {
-    const apiURL = import.meta.env.VITE_BACKEND_URL + "api";
+    const apiURL = import.meta.env.VITE_BACKEND_URL + "api"
     const [szolgaltatasok, setSzolgaltatasok] = useState([]);
 
     useEffect(() => {

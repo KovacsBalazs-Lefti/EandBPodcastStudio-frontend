@@ -16,11 +16,10 @@ function ServiceCard1(props) {
                             
                             <li style={{fontStyle:'italic', color: '#297CA4'}}>Egyedi elképzelését, ha van, kérjük jelezze felénk!</li>
                         </ul>
-						<p>Stúdióbérlés: 8000 Ft/óra</p>
                     </p>
                     <div className="card-footer">
                         <h3>{szolgaltatas.ar} Ft</h3>
-                        <p>Stúdióbérlés: 8000 Ft/óra</p>
+                        <p>+Stúdióbérlés: 8000 Ft/óra</p>
                         <a href="/login"className="btn btn-primary">Tovább a foglaláshoz</a>
                     </div>
                 </div>

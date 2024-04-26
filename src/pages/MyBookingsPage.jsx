@@ -48,7 +48,7 @@ function MyBookingsPage() {
                     <h1 className="main-headingtitle3"> PODCASTSÚDIÓ<span className="ChangeHeadText">/FOGLALÁSAIM</span></h1>
                     
                     {bookings.length == 0 ? (
-                        <p>Még nincs felvéve hirdetés</p>
+                         <h2 className="text-center" style={{fontStyle: "italic", padding: "50px", color: "#297CA4"}}>Még nincs felvéve hirdetés</h2>
                     ) : (
                         <div className="text-center">
                         <BookingList bookings={bookings} mybookings={true} />
