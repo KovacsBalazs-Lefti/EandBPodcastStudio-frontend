@@ -94,6 +94,7 @@ export function AuthProvider(props) {
                 return true;
             } else {
                 console.error(data);
+                alert("Hiba történt: " + data.message);
                 setError(data.message);
                 return false;
             }
@@ -124,6 +125,7 @@ export function AuthProvider(props) {
                 console.log(data);
                 console.error(data);
                 setError(data.message);
+                alert("Hiba történt: " + data.message);
             }
 
         },
