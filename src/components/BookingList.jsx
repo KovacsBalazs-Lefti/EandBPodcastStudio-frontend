@@ -4,8 +4,8 @@ import BookingTable from "./BookingTable";
 function BookingList(props) {
     const { bookings, mybookings } = props;
 
-    return (<div className="table-responsive text-nowrap">
-
+    return (<div className="d-flex justify-content-center">
+        <div className="table-responsive text-nowrap">
             <table className="table-dark">
                 <thead>
                     <tr>
@@ -23,6 +23,7 @@ function BookingList(props) {
                     ))}
                 </tbody>
             </table>
+        </div>
         </div>
 
 

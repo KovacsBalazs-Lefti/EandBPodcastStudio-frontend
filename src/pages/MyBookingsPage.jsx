@@ -40,7 +40,8 @@ function MyBookingsPage() {
 
     return (
 
-        <div>
+        <div className="container"> 
+        <div className="row justify-content-center">
 
             {bookings ? (
                 <>
@@ -49,14 +50,15 @@ function MyBookingsPage() {
                     {bookings.length == 0 ? (
                         <p>Még nincs felvéve hirdetés</p>
                     ) : (
-                        <div className="container">
+                        <div className="text-center">
                         <BookingList bookings={bookings} mybookings={true} />
                         </div>
                     )}
                 </>
             ) : (
-                <h2 className="text-center">Adatok betöltése folyamatban...</h2>
+                <h2 className="text-center" style={{fontStyle: "italic", padding: "50px", color: "#297CA4"}}>Adatok betöltése folyamatban...</h2>
             )}
+            </div>
         </div>
     );
 

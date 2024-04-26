@@ -124,45 +124,45 @@ function UpdateBookingPage() {
     };
 
     return (
-
-        <div className="row justify-content-center" style={{ padding: 100 }}>
-            <form onSubmit={handleSubmit}>
-                <h2>Foglalás módosítása</h2>
-                <div className="mb-3">
-                    <label className="form-label" htmlFor="szolgaltatasnev">Szolgáltatás neve</label>
-                    <select className="form-control" id="szolgaltatasnev" ref={szolgaltatasnevRef} onChange={handleSelectChange}>
-                        <option value="">Válassz...</option>
-                        {szolgaltatasok.map(szolgaltatas => (
-                            <option key={szolgaltatas.szolgaltatasid} value={szolgaltatas.szolgaltatasnev}>{szolgaltatas.szolgaltatasnev}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label" htmlFor="letszam">Létszám</label>
-                    <input className="form-control" type="number" id="letszam" placeholder="Adja meg hány fő érkezik" ref={letszamRef} />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label" htmlFor="foglalaskezdete">Foglalás kezdete</label>
-                    <input className="form-control" type="datetime-local" id="foglalaskezdete" placeholder="Foglalás kezdete" ref={foglalaskezdeteRef} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="foglalashossza">Foglalás hossza</label>
-                    <input className="form-control" type="text" id="foglalashossza" placeholder="Foglalás hossza" ref={foglalashosszaRef} />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="megjegyzes">Megjegyzés</label>
-                    <textarea className="form-control" name="megjegyzes" id="megjegyzes" cols="30" rows="10" ref={megjegyzesRef}></textarea>
-                </div>
-                <div className="d-grid">
-                    <button className="btn btn-outline-danger">Módosítás</button>
-                </div>
-                <br />
-                <div className="d-grid">
-                    <a href="/my-bookings" className="btn btn-outline-primary">Mégse</a>
-                </div>
-            </form>
+        <div className="container">
+            <div className="row justify-content-center" style={{ padding: 100 }}>
+                <form onSubmit={handleSubmit}>
+                <h1 className="main-headingtitle3"> FOGLALÁS<span className="ChangeHeadText">/MÓDOSÍTÁS</span></h1>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="szolgaltatasnev">Szolgáltatás neve</label>
+                        <select className="form-control" id="szolgaltatasnev" ref={szolgaltatasnevRef} onChange={handleSelectChange}>
+                            <option value="">Válassz...</option>
+                            {szolgaltatasok.map(szolgaltatas => (
+                                <option key={szolgaltatas.szolgaltatasid} value={szolgaltatas.szolgaltatasnev}>{szolgaltatas.szolgaltatasnev}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="letszam">Létszám</label>
+                        <input className="form-control" type="number" id="letszam" placeholder="Adja meg hány fő érkezik" ref={letszamRef} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="foglalaskezdete">Foglalás kezdete</label>
+                        <input className="form-control" type="datetime-local" id="foglalaskezdete" placeholder="Foglalás kezdete" ref={foglalaskezdeteRef} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="foglalashossza">Foglalás hossza</label>
+                        <input className="form-control" type="text" id="foglalashossza" placeholder="Foglalás hossza" ref={foglalashosszaRef} />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="megjegyzes">Megjegyzés</label>
+                        <textarea className="form-control" name="megjegyzes" id="megjegyzes" cols="30" rows="10" ref={megjegyzesRef}></textarea>
+                    </div>
+                    <div className="d-grid">
+                        <button className="btn btn-outline-danger">Módosítás</button>
+                    </div>
+                    <br />
+                    <div className="d-grid">
+                        <a href="/my-bookings" className="btn btn-outline-primary">Mégse</a>
+                    </div>
+                </form>
+            </div>
         </div>
-
     );
 }
 
