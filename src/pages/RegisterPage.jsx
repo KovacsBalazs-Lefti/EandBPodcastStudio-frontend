@@ -90,8 +90,8 @@ function RegisterPage() {
                             <input className="form-control" type="password" id="jelszo" placeholder="jelszo" ref={jelszoRef} />
                         </div>
                         <div className="mb-3">
-                            <label className="form-label" htmlFor="jelszo_megerositese">Jelszó megerősítése</label>
-                            <input className="form-control" type="password" id="jelszo_megerositese" placeholder="Jelszó megerősítése" ref={jelszo_megerositeseRef} />
+                            <label className="form-label" htmlFor="jelszo_megerositese" hidden>Jelszó megerősítése</label>
+                            <input className="form-control" type="password" id="jelszo_megerositese" placeholder="Jelszó megerősítése" hidden ref={jelszo_megerositeseRef} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label" htmlFor="telefonszam">Telefonszám</label>
