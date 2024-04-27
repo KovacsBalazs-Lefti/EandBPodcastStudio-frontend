@@ -14,6 +14,7 @@ function UpdateBookingPage() {
     const navigate = useNavigate();
     const [szolgaltatasok, setSzolgaltatasok] = useState([]);
     const [selectedService, setSelectedService] = useState('');
+    const [data,setData] = useState({});
     //ebből kérdezem le milyen paraméterek vannak az url-be
     const params = useParams();
     const user_felhasznaloid = params.user_felhasznaloid;
@@ -31,12 +32,13 @@ function UpdateBookingPage() {
             if (response.status == 403) {
                 navigate("/my-bookings");
             } else if (response.ok) {
-                const data = await response.json();
-                szolgaltatasnevRef.current.value = data.szolgaltatasnev;
-                letszamRef.current.value = data.letszam;
-                foglalaskezdeteRef.current.value = data.foglalaskezdete;
-                foglalashosszaRef.current.value = data.foglalashossza;
-                megjegyzesRef.current.value = data.megjegyzes;
+                const fetchedData = await response.json();
+                setData(fetchedData);
+                szolgaltatasnevRef.current.value = fetchedData.szolgaltatasnev;
+                letszamRef.current.value = fetchedData.letszam;
+                foglalaskezdeteRef.current.value = fetchedData.foglalaskezdete;
+                foglalashosszaRef.current.value = fetchedData.foglalashossza;
+                megjegyzesRef.current.value = fetchedData.megjegyzes;
             }
         }
         loadBookingsData();

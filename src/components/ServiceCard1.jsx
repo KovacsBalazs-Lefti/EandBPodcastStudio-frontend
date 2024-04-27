@@ -20,7 +20,7 @@ function ServiceCard1(props) {
                     <div className="card-footer">
                         <h3>{szolgaltatas.ar} Ft</h3>
                         <p>+Stúdióbérlés: 8000 Ft/óra</p>
-                        <a href="/login"className="btn btn-primary">Tovább a foglaláshoz</a>
+                        <a href="/create-bookings"className="btn btn-primary">Tovább a foglaláshoz</a>
                     </div>
                 </div>
             </div>   

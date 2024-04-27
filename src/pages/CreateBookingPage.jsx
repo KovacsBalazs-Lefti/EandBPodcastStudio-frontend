@@ -13,6 +13,7 @@ function CreateBookingPage() {
     const navigate = useNavigate();
     const [szolgaltatasok, setSzolgaltatasok] = useState([]);
     const [selectedService, setSelectedService] = useState('');
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         if (authToken ===null) {
@@ -26,6 +27,12 @@ function CreateBookingPage() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!selectedService) {
+            alert("Válassz szolgáltatást!");
+            return; // Ne folytassuk a kérést, ha nincs kiválasztva szolgáltatás
+        }
+
         const szolgaltatasnev = selectedService;
         const letszam = letszamRef.current.value;
         const foglalaskezdete = foglalaskezdeteRef.current.value;
@@ -34,6 +41,8 @@ function CreateBookingPage() {
         await createBookings(szolgaltatasnev, letszam, foglalaskezdete, foglalashossza, megjegyzes);
         fetchSzolgaltatasok(); // Frissítsd a szolgáltatásokat a foglalás létrehozása után
     };
+
+   
 
     const handleSelectChange = (event) => {
         setSelectedService(event.target.value);
@@ -55,8 +64,9 @@ function CreateBookingPage() {
             } else {
                 throw new Error("Nem sikerült betölteni a szolgáltatásokat!");
             }
-        } catch (error) {
+        } catch(error){
             console.error(error);
+            alert("Válassz szolgáltatást!");
         }
     };
 
@@ -79,6 +89,7 @@ function CreateBookingPage() {
             });
             if (!response.ok) {
                 const data = await response.json();
+                setErrorMessage(data.message);
                 throw new Error(data.message);
             } else {
                 alert("Sikeres felvétel");
@@ -87,7 +98,7 @@ function CreateBookingPage() {
             }
         } catch (error) {
             console.error(error);
-            alert("Hiba történt a foglalás létrehozása során.");
+            alert("Hiba történt: " + error.message);
         }
     };
 
@@ -134,6 +145,10 @@ function CreateBookingPage() {
                             <button className="btn btn-primary">Felvétel</button>
                         </div>
                     </form>
+                    <br />
+                    <div className="text-center">
+                        <a href="/" style={{color: "white"}}>vissza</a>
+                    </div>
                 </div>
             </div>
         </div>
