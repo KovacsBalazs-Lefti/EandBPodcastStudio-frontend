@@ -90,6 +90,7 @@ function UpdateBookingPage() {
             }
         } catch (error) {
             console.error(error);
+            
         }
     };
 
@@ -121,7 +122,7 @@ function UpdateBookingPage() {
             }
         } catch (error) {
             console.error(error);
-            alert("Hiba történt a foglalás létrehozása során.");
+            alert("Hiba történt: " + error.message);
         }
     };
 

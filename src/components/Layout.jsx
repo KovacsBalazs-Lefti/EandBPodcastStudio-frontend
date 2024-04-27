@@ -17,17 +17,17 @@ function Layout() {
     navbarLeftSide.push({ to: "/", key: "Aboutus", text: "Rólunk" });
 
     if (authToken) {
-        navbarLeftSide.push({ to: "/my-bookings", text: "Foglalásaim" });
-        navbarLeftSide.push({ to: "/create-bookings", text: "Új Foglalás felvétele" });
-        navbarRightSide.push({ to: "/user-profile", text: "Profil" });
+        navbarLeftSide.push({ to: "/my-bookings", key:"Bookings", text: "Foglalásaim" });
+        navbarLeftSide.push({ to: "/create-bookings", key:"CreateBookings", text: "Új Foglalás felvétele" });
+        navbarRightSide.push({ to: "/user-profile", key:"UserPofile", text: "Profil" });
         navbarRightSideOthers.push(
             <button className="nav-link" onClick={() => logout()}>Kijelentkezés</button>
         );
 
 
     } else {
-        navbarRightSide.push({ to: "/login", text: "Bejelentkezés" });
-        navbarRightSide.push({ to: "/register", text: "Regisztráció" });
+        navbarRightSide.push({ to: "/login", key:"Loginto", text: "Bejelentkezés" });
+        navbarRightSide.push({ to: "/register", key:"RegisterTo", text: "Regisztráció" });
     }
 
     return (
