@@ -36,8 +36,13 @@ function LoginPage() {
             <div className="mb-3">
               <label className="form-label" htmlFor="loginjelszo">Jelszó</label>
               <input className="form-control" type="password" id="loginjelszo" placeholder="jelszo" ref={jelszoRef} />
-            </div>
+            </div >     
+            <div style={{textAlign:"center", padding:"5px"}}>
             <button className="btn btn-primary" type="submit">Bejelentkezés</button>
+            </div>
+            <div style={{textAlign:"center"}}>
+            <p>Ha még nem reigsztráltál, megteheted <a href="/register">itt</a></p>
+            </div>
           </form>
         </div>
       </div>
