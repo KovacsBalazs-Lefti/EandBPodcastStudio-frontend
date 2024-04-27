@@ -142,6 +142,7 @@ export function AuthProvider(props) {
                 localStorage.removeItem("token");
                 setauthToken(null);
                 setError(null);
+                alert("Sikeres kijelentkezés")
             }
             else {
                 const data = await response.json();

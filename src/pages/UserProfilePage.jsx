@@ -19,6 +19,7 @@ function UserProfile() {
       <div className="text-center">
         <h2 className="main-headingtitle3"> PROFIL<span className="ChangeHeadText">/OLDALAM</span></h2>
         <h4 style={{ color: "white", padding:"50px" }}>Bejelentkezve: {user.nev}</h4>
+        <p style={{fontStyle:'italic', color: '#297CA4'}}>Profiladatainak bármely változtatásái igényét jelezze felénk e-mailen, vagy telefonon.</p>
       </div>
 
       <div className="row justify-content-center">
