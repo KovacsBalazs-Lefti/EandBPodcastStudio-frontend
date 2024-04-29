@@ -12,22 +12,24 @@ function Layout() {
     const navbarRightSide = [];
     const navbarRightSideOthers = [];
 
-    navbarLeftSide.push({ ImgLogo: <img src="/images/logoblack.png" alt="Logo"  style={{ height: '150px', width: 'auto', maxWidth: '100%' }} />,
-     to: "/", key:"Logo" });
+    navbarLeftSide.push({
+        ImgLogo: <img src="/images/logoblack.png" alt="Logo" style={{ height: '150px', width: 'auto', maxWidth: '100%' }} />,
+        to: "/", key: "Logo"
+    });
     navbarLeftSide.push({ to: "/", key: "Aboutus", text: "Rólunk" });
 
     if (authToken) {
-        navbarLeftSide.push({ to: "/my-bookings", key:"Bookings", text: "Foglalásaim" });
-        navbarLeftSide.push({ to: "/create-bookings", key:"CreateBookings", text: "Új Foglalás felvétele" });
-        navbarRightSide.push({ to: "/user-profile", key:"UserPofile", text: "Profil" });
+        navbarLeftSide.push({ to: "/my-bookings", key: "Bookings", text: "Foglalásaim" });
+        navbarLeftSide.push({ to: "/create-bookings", key: "CreateBookings", text: "Új Foglalás felvétele" });
+        navbarRightSide.push({ to: "/user-profile", key: "UserPofile", text: "Profil" });
         navbarRightSideOthers.push(
             <button className="nav-link" onClick={() => logout()}>Kijelentkezés</button>
         );
 
 
     } else {
-        navbarRightSide.push({ to: "/login", key:"Loginto", text: "Bejelentkezés" });
-        navbarRightSide.push({ to: "/register", key:"RegisterTo", text: "Regisztráció" });
+        navbarRightSide.push({ to: "/login", key: "Loginto", text: "Bejelentkezés" });
+        navbarRightSide.push({ to: "/register", key: "RegisterTo", text: "Regisztráció" });
     }
 
     return (
@@ -42,6 +44,16 @@ function Layout() {
                 </div>
             </div>
             <Outlet />
+            <footer className="container-fluid bg-dark">
+                <div className="row">
+                    <div className="col-sm-6 text-white text-lef d-flex align-items-center" style={{padding: "50px"}}>
+                    <h1 className="main-headingtitle">A <span className="ChangeHeadText"> NEKED </span> SZÓLÓ <br /> ÉLMÉNY</h1>
+                    </div>
+                    <div className="col-sm-6 text-right d-flex justify-content-end align-items-center">
+                        <img src="/images/logoblack.png" alt="" className="img-fluid" style={{marginRight: "150px", maxWidth: "150px", maxHeight:"150px", float:"right"}} />
+                    </div>
+                </div>
+            </footer>
         </main>
     );
 }
