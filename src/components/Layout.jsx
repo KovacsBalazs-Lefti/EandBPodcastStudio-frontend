@@ -44,13 +44,13 @@ function Layout() {
                 </div>
             </div>
             <Outlet />
-            <footer className="container-fluid bg-dark">
+            <footer className="container-fluid" style={{backgroundColor: "black", borderTop: "2px solid #297CA4"}}>
                 <div className="row">
-                    <div className="col-sm-6 text-white text-lef d-flex align-items-center" style={{padding: "50px"}}>
+                    <div className="col-12 col-md-6 text-white text-lef d-flex align-items-center" style={{padding: "50px"}}>
                     <h1 className="main-headingtitle">A <span className="ChangeHeadText"> NEKED </span> SZÓLÓ <br /> ÉLMÉNY</h1>
                     </div>
-                    <div className="col-sm-6 text-right d-flex justify-content-end align-items-center">
-                        <img src="/images/logoblack.png" alt="" className="img-fluid" style={{marginRight: "150px", maxWidth: "150px", maxHeight:"150px", float:"right"}} />
+                    <div className="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                        <img src="/images/logoblack.png" alt="" className="img-fluid" style={{ maxWidth: "150px", maxHeight:"150px"}} />
                     </div>
                 </div>
             </footer>
