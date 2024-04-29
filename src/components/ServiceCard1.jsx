@@ -1,6 +1,10 @@
 import PropTypes from "prop-types";
 function ServiceCard1(props) {
-
+/**
+ * 
+ * kártyák kilakítása szolgáltatási adatok megjelenítésére
+ * 
+ */
     const { szolgaltatas } = props;
     return (
         <div className="card-group">

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import  BookingList from "../components/BookingList";
+import BookingList from "../components/BookingList";
 
 function MyBookingsPage() {
     const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
@@ -26,13 +26,13 @@ function MyBookingsPage() {
                 logout();
             }
         };
-        if (authToken===null) {
+        if (authToken === null) {
             navigate("/login");
-            
-        }else if(authToken==undefined){
+
+        } else if (authToken == undefined) {
 
         }
-         else {
+        else {
             loadBookings();
         }
     }, [apiUrl, authToken, logout, navigate]);
@@ -40,24 +40,30 @@ function MyBookingsPage() {
 
     return (
 
-        <div className="container"> 
-        <div className="row justify-content-center">
+        <div className="container">
+            <div className="row justify-content-center">
 
-            {bookings ? (
-                <>
-                    <h1 className="main-headingtitle3"> PODCASTSÚDIÓ<span className="ChangeHeadText">/FOGLALÁSAIM</span></h1>
-                    
-                    {bookings.length == 0 ? (
-                         <h2 className="text-center" style={{fontStyle: "italic", padding: "50px", color: "#297CA4"}}>Még nincs felvéve foglalás</h2>
-                    ) : (
-                        <div className="text-center">
-                        <BookingList bookings={bookings} mybookings={true} />
-                        </div>
-                    )}
-                </>
-            ) : (
-                <h2 className="text-center" style={{fontStyle: "italic", padding: "50px", color: "#297CA4"}}>Adatok betöltése folyamatban...</h2>
-            )}
+                {bookings ? (
+                    <>
+                        <h1 className="main-headingtitle3"> PODCASTSÚDIÓ<span className="ChangeHeadText">/FOGLALÁSAIM</span></h1>
+
+                        {bookings.length == 0 ? (
+                            <div className="text-center">
+                                <h2 className="text-center" style={{ fontStyle: "italic", padding: "50px", color: "#297CA4" }}>Még nincs felvéve foglalás</h2>
+                                <a href="/create-bookings"className="btn btn-primary">Tovább a foglaláshoz</a>
+                            </div>
+
+
+
+                        ) : (
+                            <div className="text-center">
+                                <BookingList bookings={bookings} mybookings={true} />
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <h2 className="text-center" style={{ fontStyle: "italic", padding: "50px", color: "#297CA4" }}>Adatok betöltése folyamatban...</h2>
+                )}
             </div>
         </div>
     );
