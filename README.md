@@ -7,7 +7,9 @@
   
 ## Adattábla
 
-## Felhasználói kézikönyv a repo rootjában
+## Felhasználói kézikönyv a repo rootjában (1 db)
+
+## Tesztelési jegyzőkönyv a repo rootjában (1 db)
 
 ## telepítés lépései
 
