@@ -7,6 +7,8 @@
   
 ## Adattábla
 
+## Felhasználói kézikönyv a repo rootjában
+
 ## telepítés lépései
 
 - Csomagok telepítése
