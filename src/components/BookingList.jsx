@@ -1,6 +1,12 @@
 import PropTypes from "prop-types";
 import BookingTable from "./BookingTable";
 
+
+/**
+ * Kártyák listázását megjelenítő komponens
+ * @param {*} props 
+ */
+
 function BookingList(props) {
     const { bookings, mybookings } = props;
 

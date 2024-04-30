@@ -2,6 +2,11 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
+/**
+ * Regisztrációs oldal felhasználók számára
+ * @returns {JSX.element} A regisztrációs űrlapot tartalmazó JSX elem.
+ */
+
 function RegisterPage() {
     const nevRef = useRef(null);
     const emailRef = useRef(null);

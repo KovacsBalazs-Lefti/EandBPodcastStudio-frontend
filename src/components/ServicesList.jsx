@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 import ServiceCard1 from './ServiceCard1';
 
+/**
+ * Szolgáltatásokat megjelenítő lista komponens
+ * @param {object} props 
+ */
+
+
 function ServicesList(props) {
     const { szolgaltatasok } = props;
     return (<div className='row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-3'>

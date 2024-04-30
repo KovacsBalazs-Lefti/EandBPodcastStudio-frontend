@@ -2,6 +2,11 @@ import { useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
+/**
+ * Bejelentkezési oldal a stúdió bérléshez
+ * 
+ */
+
 
 function LoginPage() {
   const emailRef = useRef(null);

@@ -2,6 +2,11 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
+/**
+ * Felhasználói profil oldal
+ * @returns {JSX.element} A felhasználó profilját tartalmazó JSX elem.
+ */
+
 
 function UserProfile() {
   const navigate = useNavigate();

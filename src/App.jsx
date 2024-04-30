@@ -12,9 +12,15 @@ import MyBookingsPage from './pages/MyBookingsPage';
 import CreateBookingPage from './pages/CreateBookingPage';
 import UpdateBookingPage from './pages/UpdateBookingPage';
 
+/**
+ * Az alkalmazás fő komponense
+ * 
+ */
+
+
 function App() {
 
-
+//React böngészőtár inicializálása
   const router = createBrowserRouter([
     {
       path: "/",
@@ -52,7 +58,7 @@ function App() {
     },
   ]);
 
-
+//AuthProvider a bejelentkezési állapot kontextusának biztosítására
   return (
       <AuthProvider>
       <RouterProvider router={router} />

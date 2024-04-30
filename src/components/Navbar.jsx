@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
+/**
+ * A navigációs elemek megjelenítésére szolgáló komponens
+ * @param {*} props 
+ */
 
 function Navbar(props) {
     const { leftSide, rightSide, rightSideOthers } = props;

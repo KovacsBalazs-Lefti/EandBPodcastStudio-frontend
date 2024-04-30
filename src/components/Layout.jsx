@@ -3,6 +3,11 @@ import { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
+/**
+ * 
+ * @returns A dinamikus navigációs menüpontok megjelenítése
+ * Main, Header, body, footer felépítések megjelenítése
+ */
 
 function Layout() {
     const authContext = useContext(AuthContext);

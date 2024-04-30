@@ -2,8 +2,8 @@ function Services() {
 
     /**
      * A services oldal egy korábbi kártyás megjelenítésre szolgáló oldal
-     * aminek konkrét felhasználása nincs. A szolgáltatás oldalnak
-     * egy nem backend háttérmotorján működő kártyás megjelenítést szolgáló kompononens
+     * amit backanedes get kéréses megoldás követett. Ez tartalék megoldás maradt bent.
+     * Ez az oldal nem backend háttérmotorján működő kártyás megjelenítést szolgáló kompononens
      */
 
     return (

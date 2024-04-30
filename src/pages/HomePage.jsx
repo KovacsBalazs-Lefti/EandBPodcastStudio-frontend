@@ -2,6 +2,14 @@ import { useEffect, useState } from "react";
 import Services from "../components/Services";
 import ServicesList from "../components/ServicesList";
 
+
+/**
+ * A Főoldal amely bemutatja a podcast stúdiót és a foglalási csomagokat.
+ * 
+ */
+
+
+
 function HomePage() {
     const apiURL = import.meta.env.VITE_BACKEND_URL + "api"
     const [szolgaltatasok, setSzolgaltatasok] = useState([]);

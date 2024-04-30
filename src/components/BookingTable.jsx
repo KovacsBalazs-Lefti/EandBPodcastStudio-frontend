@@ -4,6 +4,10 @@ import { AuthContext} from "../context/AuthContext";
 import { useContext } from "react";
 import MyBookingsPage from "../pages/MyBookingsPage";
 
+/**
+ * Foglalási adatait megjelenítő komponens
+ * @param {*} props 
+ */
 
 function BookingTable(props) {
     const { booking} = props;

@@ -4,6 +4,8 @@
 ## Követelmények
 
 - NodeJS 18
+  
+## Adattábla
 
 ## telepítés lépései
 

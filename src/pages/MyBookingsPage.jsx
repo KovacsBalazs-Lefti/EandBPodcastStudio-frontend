@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import BookingList from "../components/BookingList";
 
+
+/**
+ * Felhasználó foglalásának megjelenítése
+ * @returns {JSX.Element} A foglalásokat tartalmazó JSX elem.
+ */
+
 function MyBookingsPage() {
     const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
     const navigate = useNavigate();

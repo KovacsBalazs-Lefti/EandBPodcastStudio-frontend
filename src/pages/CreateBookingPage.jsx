@@ -2,6 +2,13 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 
+/**
+ * 
+ *  Oldal a foglalas létrehozásához
+ * @component
+ */
+
+
 function CreateBookingPage() {
     const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
     const szolgaltatasnevRef = useRef(null);

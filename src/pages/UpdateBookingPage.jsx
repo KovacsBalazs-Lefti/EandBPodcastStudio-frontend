@@ -3,6 +3,11 @@ import { AuthContext } from "../context/AuthContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useRef, useState } from "react";
 
+/**
+ * A foglalást módosító oldal a felhasználók számára.
+ * @returns {JSX.Element} a foglalást módosító űrlapot tartalmazó JSX elem.
+ */
+
 function UpdateBookingPage() {
     const apiUrl = import.meta.env.VITE_BACKEND_URL + "api";
     const szolgaltatasnevRef = useRef(null);

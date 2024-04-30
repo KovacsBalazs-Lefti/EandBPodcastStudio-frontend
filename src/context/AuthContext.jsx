@@ -1,10 +1,22 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
+/**
+ * Autentikációt kezelő kontextus és az ahhoz kapcsolódó függvények
+ * @typedef {Object} AuthContext
+ * @property {string} authToken - autentikációs token
+ * @property {Object} user - Az autentikált felhasználó adatok
+ */
+
 //createContextel fog értéket kapni 
 export const AuthContext = createContext();
 
 //komponones létrehozása, amit az appban felhasznalok majd
+
+/**
+ * Az autentikációs állapot kezeléséhez
+ * @param {Object} props - Komponens tulajdonságok 
+ */
 export function AuthProvider(props) {
     const apiUrl = import.meta.env.VITE_BACKEND_URL+"api";
     const { children } = props;
